@@ -2,6 +2,12 @@
 
 Public source release of the Oak DayZ internal client stack.
 
+## Screenshots
+
+![In-game menu](1.png)
+
+![Character selection with overlay](2.png)
+
 ## Layout
 
 - `oak/apps/web` — website (Next.js)

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login — Oak</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+    <header class="page-head">
+      <h1>Login</h1>
+      <p>Sign in to manage license time and redeem keys.</p>
+    </header>
+    <div class="form-panel">
+      <div class="field">
+        <label for="login">Username / email</label>
+        <input id="login" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" />
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" id="btn" type="button">Sign in</button>
+      </div>
+      <p id="err" class="error"></p>
+      <p class="form-foot">No account? <a href="/register.html">Register</a> · <a href="/forgot-password.html">Forgot password</a></p>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("login");
+    Oak.applyBootstrap();
+    if (Oak.getToken()) location.href = "/account.html";
+    const params = new URLSearchParams(location.search);
+    const next = params.get("next") || "/account.html";
+    async function doLogin() {
+      document.getElementById("err").textContent = "";
+      try {
+        const body = await Oak.api("/v1/auth/login", {
+          method: "POST",
+          body: JSON.stringify({
+            login: document.getElementById("login").value.trim(),
+            password: document.getElementById("password").value,
+          }),
+        });
+        Oak.setToken(body.accessToken);
+        Oak.saveUser(body.user);
+        location.href = next;
+      } catch (e) {
+        if (e.message === "banned" || e.body?.error === "banned") {
+          document.getElementById("err").textContent =
+            "This account is banned. Reason: " + (e.body?.reason || "banned");
+          return;
+        }
+        document.getElementById("err").textContent = Oak.friendlyError(e);
+      }
+    }
+    document.getElementById("btn").onclick = doLogin;
+    document.getElementById("password").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") doLogin();
+    });
+  </script>
+</body>
+</html>

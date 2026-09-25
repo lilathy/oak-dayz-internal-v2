@@ -1,0 +1,18 @@
+DayZ + NVIDIA Freestyle / Game Filters
+======================================
+
+HARD LIMIT: Freestyle "Game Filters" on DayZ crash in ppeGetVersion
+(NVIDIA PPE) during D3D init. Do not re-enable filters on DayZ.
+
+Safe launch:
+  C:\oak\dayz\LaunchDayZSafe.bat
+  or: powershell -NoProfile -ExecutionPolicy Bypass -File C:\oak\dayz\LaunchDayZSafe.ps1 -InitSeconds 45
+
+Steam Launch Options (quit Steam first, then edit):
+  C:/oak/dayz/steam_wrap.cmd %command%
+
+Overlay can return AFTER DayZ_x64 is stable. Applying Freestyle to DayZ
+will crash again.
+
+Color fallback (no Freestyle):
+  NVIDIA Control Panel → Adjust desktop color settings → Digital Vibrance

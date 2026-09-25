@@ -1,0 +1,3 @@
+native.CameraViewChanged = 0x324560
+native.Is3rdPersonDisabled = 0x8ED160
+native.IsCrosshairDisabled = 0x8ED190

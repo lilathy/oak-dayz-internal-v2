@@ -1,0 +1,77 @@
+# Dependencies & local env
+**/node_modules/
+**/.next/
+**/.env
+**/.env.*
+!**/.env.example
+**/data/
+**/data/*.sqlite
+**/data/*.sqlite-*
+
+# Native / .NET build outputs
+bin/
+obj/
+build/
+build_*/
+**/x64/
+**/Release/
+**/Debug/
+**/*.tlog/
+**/*.recipe
+**/*.lastbuildstate
+**/CMakeCache.txt
+**/CMakeFiles/
+*.vcxproj.user
+*.obj
+*.o
+*.pdb
+*.map
+*.ilk
+*.exp
+*.idb
+*.ipdb
+*.iobj
+*.dll
+*.sys
+*.exe
+*.lib
+
+# Local launcher overrides (never ship absolute developer paths)
+**/oak.launcher.json
+!**/oak.launcher.json.example
+
+# Logs & junk
+*.log
+inject.log
+oak_imgui*.log
+oak_panel_*.png
+protect_auth.flag
+oak_dev_unlock
+
+# Python
+**/__pycache__/
+*.pyc
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vs/
+*.user
+*.suo
+*~
+
+# Excluded from the public release
+oak/clients/CS2/
+oak/clients/rust/
+oak/clients/eft/
+oak/apps/launcher/tools/
+oak/scripts/archive/
+oak/docs/archive/
+oak/docs/anti-piracy-plan.md
+oak/docs/telemetry-abuse-plan.md
+oak/docs/security-audit-2026-08-03.md
+oak/docs/security-hardening-2026-08-03.md
+oak/docs/payments.md
+oak/docs/MASTER_CHECKLIST.md
+oak/docs/Information.txt

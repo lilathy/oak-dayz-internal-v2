@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oak — DayZ</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+
+    <header class="hero">
+      <h1 class="hero-brand">OAK<em> / DayZ</em></h1>
+      <p>Internal client for DayZ. Sign in, redeem time, run the launcher.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary bare" href="/plans.html">View plans</a>
+        <a class="btn btn-ghost bare" href="/download.html">Get launcher</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <p class="section-label">Product</p>
+      <h2>DayZ status</h2>
+      <p class="lead">Live from the API — version, uptime, and release notes.</p>
+      <div id="product">
+        <div class="status-strip">
+          <div class="status-cell"><div class="k">Status</div><div class="v muted">Loading…</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("home");
+    Oak.applyBootstrap();
+    (async () => {
+      const box = document.getElementById("product");
+      try {
+        const data = await Oak.api("/v1/products/public/dayz");
+        const p = data.product;
+        const stClass =
+          p.status === "online" ? "status-online" :
+          p.status === "maintenance" ? "status-maintenance" : "status-offline";
+        box.innerHTML = `
+          <div class="status-strip">
+            <div class="status-cell">
+              <div class="k">Status</div>
+              <div class="v ${stClass}">${(p.status || "—").toUpperCase()}</div>
+            </div>
+            <div class="status-cell">
+              <div class="k">Version</div>
+              <div class="v">${p.latestVersion || "—"}</div>
+            </div>
+            <div class="status-cell">
+              <div class="k">Min launcher</div>
+              <div class="v">${p.minLauncher || "—"}</div>
+            </div>
+            <div class="status-cell">
+              <div class="k">Updated</div>
+              <div class="v">${(p.updatedAt || "—").toString().slice(0, 10)}</div>
+            </div>
+          </div>
+          <div class="changelog">
+            <p class="section-label">Changelog</p>
+            <p class="muted" style="margin:0 0 8px">${p.description || ""}</p>
+            <pre>${(p.changelog || "—").replace(/</g, "&lt;")}</pre>
+          </div>
+        `;
+      } catch (e) {
+        box.innerHTML = `<p class="error">${e.message}</p>
+          <p class="muted">API down? Check <a href="/health">/health</a>.</p>`;
+      }
+    })();
+  </script>
+</body>
+</html>

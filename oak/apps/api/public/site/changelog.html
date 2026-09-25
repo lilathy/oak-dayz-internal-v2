@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Changelog — Oak</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+    <header class="page-head">
+      <h1>Changelog</h1>
+      <p>DayZ client notes from the API plus admin extras.</p>
+    </header>
+    <div id="content"><p class="muted">Loading…</p></div>
+  </div>
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("changelog");
+    (async () => {
+      const b = await Oak.applyBootstrap();
+      const box = document.getElementById("content");
+      try {
+        const data = await Oak.api("/v1/products/public/dayz");
+        const p = data.product;
+        box.innerHTML = `
+          <div class="block">
+            <h2>Client ${p.latestVersion}</h2>
+            <p class="muted">${p.description || ""}</p>
+            <pre style="font-family:var(--mono);white-space:pre-wrap;color:var(--mid)">${(p.changelog || "—").replace(/</g,"&lt;")}</pre>
+          </div>
+          <div class="block">
+            <h2>Site notes</h2>
+            <pre style="font-family:var(--mono);white-space:pre-wrap;color:var(--mid)">${((b && b.changelogExtra) || "—").replace(/</g,"&lt;")}</pre>
+          </div>
+        `;
+      } catch (e) {
+        box.innerHTML = `<p class="error">${e.message}</p>`;
+      }
+    })();
+  </script>
+</body>
+</html>

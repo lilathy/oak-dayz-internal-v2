@@ -1,0 +1,2705 @@
+{
+  "version": 2,
+  "module_paths": {
+    "modbase.FOV_Context": {
+      "old_rva": 16809072,
+      "xref_count": 2,
+      "signatures": [
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "292ee9ff488bd84885c07431488b052a08b6004c8d05cb3a7d0048",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 4879423
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "49eae8ff488bd84885c07431488b054ac4b5004c8d05d3157d0048",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 4896799
+        }
+      ]
+    },
+    "modbase.Network": {
+      "old_rva": 16837472,
+      "xref_count": 1,
+      "signatures": [
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "0800488bd848893d19f8fd00488d0512f8fd00c70500f8fd000300",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 193351
+        }
+      ]
+    },
+    "modbase.NetworkManager": {
+      "old_rva": 16837584,
+      "xref_count": 12,
+      "signatures": [
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "bb00cccccccccccc4883ec28488d0db5f6fd00e840176c00488d0d",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 193812
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "4881c138050000e8d550ffff488d0d7e2a9200e8196e0100488b1d",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 7258443
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "c2c3cccccccccccccccccccc488d0509b69000c3cccccccccccccc",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 7353792
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "4885c90f8543380100c3cccc488d0dd9c28f00e904000000cccccc",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 7416048
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "24404c8d442440ba01000000488d0d13518f00e8be92fdff488b8c",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 7445174
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "8b405c41ff915001000033d2488d0d502a8f004883c428e9b7a3fe",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 7455097
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "ccccf30f11496cf30f114968488d0dcf1e8700e9ca98f6ffcccccc",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 7982330
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "4883ec48488bf90f29742420488d0daa3d7f00418be80f28f1e8cf",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 8498719
+        }
+      ]
+    },
+    "modbase.PhysicsWorld": {
+      "old_rva": 69624544,
+      "xref_count": 697,
+      "signatures": [
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "55df33c0f30f104dd74533c9488b0d4acd1d044889442428488944",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 562575
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "4883ec40488bd90f29742430488b0d8b011d040f297c24200f28fa",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 614734
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "f30f58c7f30f1147080f28d0488b0d15f01c04e8a09d9400498b4e",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 619204
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "c7475000000000b940000000488b05f9c21c04488b905874000066",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 630752
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "ecf0000000c64235004d8bf0488b1d2eaf1c04488bfa4885db0f84",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 635819
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "17f7b6004c8d8424b0000000488b0de8ae1c044d8bcec744244802",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 635889
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "0000000000498b8728010000488b0d92f51b04f30f103403f30f10",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 683335
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "98498bd4488bcbe8b4300300488b05cd7210044c8bbc2468010000",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 1437708
+        }
+      ]
+    },
+    "modbase.ScopeFovCtx": {
+      "old_rva": 69613744,
+      "xref_count": 0,
+      "signatures": []
+    },
+    "modbase.Tick": {
+      "old_rva": 16726312,
+      "xref_count": 0,
+      "signatures": []
+    },
+    "modbase.World": {
+      "old_rva": 69611496,
+      "xref_count": 491,
+      "signatures": [
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "004885ff7451488b07488bd34c8b05a9ba2004488bcfff50088b83",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 357688
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "0048837a40000f84de000000488b051a812004488bac24a8000000",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 372423
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "cccc48895c2408574883ec30488b1dc7732004488d0598f6ffff48",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 375834
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "04c8ff434c488d0521f6ffff488b1d5273200448894424288b4364",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 375951
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "0048837848000f8581000000488b0de16a2004e8f4378900488bf8",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 378112
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "4189823c010000e8f611b9004c8b15a95d20048bd7458b42644585",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 381496
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "c1e00441894264e86f11b9004c8b15225d2004458b424c8bcf4585",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 381631
+        },
+        {
+          "before": 12,
+          "after": 8,
+          "bytes": "4883c430415f415e415dc3cc488b05217a1d04488b4030488b8090",
+          "wildcards": [
+            15,
+            16,
+            17,
+            18
+          ],
+          "old_instr_rva": 570816
+        }
+      ]
+    }
+  },
+  "field_paths": {
+    "world.Camera": {
+      "parent": "modbase.World",
+      "old_offset": 440,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "498bfb4c8d3df0fbf000488b85b8010000488b0c38488b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 402977
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00488b03ff9040010000488b8fb8010000488d152d1ea5",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1915797
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "004885c00f844b0100004c8b97b80100004c8d05310bd6",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1915865
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "83c4205bc3cccccccccc488b89b80100004885c9741b48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1919664
+        }
+      ]
+    },
+    "world.LocalPlayer": {
+      "parent": "modbase.World",
+      "old_offset": 10592,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bb8290000e8a87ea5ff488b8b602900004885c9740ce8",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9315688
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00004883c4605fc3cccc488b816029000033d2488b4808",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9345952
+        }
+      ]
+    },
+    "world.PlayerOn": {
+      "parent": "modbase.World",
+      "old_offset": 10600,
+      "signatures": []
+    },
+    "world.NearEntList": {
+      "parent": "modbase.World",
+      "old_offset": 3912,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "000f8ee6000000448bf7488b83480f0000498b0c064885",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9402832
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00448bf7660f1f440000488b83480f0000498b1406483b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9402912
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "0383ba500f0000007e09488b92480f0000eb3483ba9810",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 10303387
+        }
+      ]
+    },
+    "world.FarEntList": {
+      "parent": "modbase.World",
+      "old_offset": 4240,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bd0488bcfe8dc20eeff488b8d901000008905b3cada00",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 2363412
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "66660f1f840000000000488b8390100000498b0c06483b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9403088
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "3483ba98100000007e09488b9290100000eb2283bae011",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 10303405
+        }
+      ]
+    },
+    "world.FarTableSize": {
+      "parent": "modbase.World",
+      "old_offset": 4248,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8d98100000e89dd368ff488b85981000004885c0742a8b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 10473763
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "1000004885c0742a8b08488b8598100000b9fffffffff0",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 10473777
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "fff00fc10883f901750c488b8d98100000e8bed293ff48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 10473798
+        }
+      ]
+    },
+    "world.SlowEntList": {
+      "parent": "modbase.World",
+      "old_offset": 8208,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b28200000e878f8ffff488b8b102000004885c9744341",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9315832
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00762c908bc2488d0c40488b8310200000833cc8017507",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9315862
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "ffc23b931820000072dc488b8b10200000e8d07da5ff4c",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9315892
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "418bc041ffc0488d1440488b87102000008934d0443b87",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9330106
+        }
+      ]
+    },
+    "world.SlowTableSize": {
+      "parent": "modbase.World",
+      "old_offset": 8216,
+      "signatures": []
+    },
+    "world.BulletList": {
+      "parent": "modbase.World",
+      "old_offset": 3584,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bf73bab080e00007d37488b83000e0000488d5424604c",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 7440395
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bfe3bb3080e00007d36488b83000e0000488b0cf880b9",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9370731
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "65973bb3080e00007d1b488b83000e0000498bcf48030c",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9399019
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "65b73bb3080e00007d1b488b83000e0000498bcf48030c",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 9399678
+        }
+      ]
+    },
+    "world.BulletCount": {
+      "parent": "modbase.World",
+      "old_offset": 3592,
+      "signatures": []
+    },
+    "world.ItemList": {
+      "parent": "modbase.World",
+      "old_offset": 8288,
+      "signatures": []
+    },
+    "world.ItemListSize": {
+      "parent": "modbase.World",
+      "old_offset": 8296,
+      "signatures": []
+    },
+    "world.NoGrass": {
+      "parent": "modbase.World",
+      "old_offset": 3072,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "9e100c0000728c4533f6488b8e000c0000baffffffff41",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5030855
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "0000008bd7e8269bddff488b96000c00004c8bc04d8bd6",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5030986
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4c120c488d555f8b4010488b8e000c0000428944111041",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5031040
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4018448bc74289441118488b86000c0000468874101e48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5031073
+        }
+      ]
+    },
+    "world.GrassOffline": {
+      "parent": "modbase.World",
+      "old_offset": 3056,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00004803cbe8080b5800488b86f00b0000418bd6c60407",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5029928
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "0000803f8b8e0c0c0000488b86f00b000003cbffc34488",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5030139
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "81100c00007426448bc2488b81f00b00004d8d4001ffc2",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5062915
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "894228418b402c89422c488b81f00b000041c6040101c6",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5065229
+        }
+      ]
+    },
+    "world.EyeAccom": {
+      "parent": "modbase.World",
+      "old_offset": 10604,
+      "signatures": []
+    },
+    "world.Hour": {
+      "parent": "modbase.World",
+      "old_offset": 10608,
+      "signatures": []
+    },
+    "world.Day": {
+      "parent": "modbase.World",
+      "old_offset": 10612,
+      "signatures": []
+    },
+    "world.DayTime": {
+      "parent": "modbase.World",
+      "old_offset": 10616,
+      "signatures": []
+    },
+    "world.WeatherController": {
+      "parent": "modbase.World",
+      "old_offset": 29080,
+      "signatures": []
+    },
+    "world.SlowEntValidCount": {
+      "parent": "modbase.World",
+      "old_offset": 8080,
+      "signatures": []
+    },
+    "anim.AnimComponent": {
+      "parent": "anim",
+      "old_offset": 280,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "75b8004889ab28010000488b8b180100004885c9740ce8",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 393563
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b30010000e890232a00488b8b18010000e884232a0048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 622720
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8594000000e872561200488b85180100004885c0741948",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 680750
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "24404c8d442450488bcf488b90180100004883c22ce8c6",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 790282
+        }
+      ]
+    },
+    "anim.MatrixArray": {
+      "parent": "anim",
+      "old_offset": 3048,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00004803cbe8170b5800488b8ee80b00004803cbe8080b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5029913
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "410f58d1f3410f11562c488b96e80b00004803d7e86fe2",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5035346
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "427a01008b93f40b0000488b8be80b0000e8e0fffaff48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5250388
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8be80b0000e8e0fffaff488b8be80b0000e8a486e3ff48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5250400
+        }
+      ]
+    },
+    "anim.MatrixB": {
+      "parent": "anim",
+      "old_offset": 84,
+      "signatures": []
+    },
+    "camera.GetProjectionD1": {
+      "parent": "camera",
+      "old_offset": 208,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "2848894310e81b010000488bb7d00000004885f6741b48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 579045
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bd8000000e846fdffff488b8bd00000004885c9741f48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 580314
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "74c5ffc33bda72eeebbd488b8fd0000000bbffffffff48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 591014
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "ff488b4b30e8282fb200488b8bd0000000e88cdc270048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 771960
+        }
+      ]
+    },
+    "camera.GetProjectionD2": {
+      "parent": "camera",
+      "old_offset": 220,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "0000f30f58fff30f117b4c8b86dc0000008983c8000000",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1854380
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8944244c8b4714894424488b83dc000000895424508944",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 2545944
+        }
+      ]
+    },
+    "camera.InvertedViewForward": {
+      "parent": "camera",
+      "old_offset": 32,
+      "signatures": []
+    },
+    "camera.InvertedViewRight": {
+      "parent": "camera",
+      "old_offset": 8,
+      "signatures": []
+    },
+    "camera.InvertedViewTranslation": {
+      "parent": "camera",
+      "old_offset": 44,
+      "signatures": []
+    },
+    "camera.InvertedViewUp": {
+      "parent": "camera",
+      "old_offset": 20,
+      "signatures": []
+    },
+    "camera.ViewPortSize": {
+      "parent": "camera",
+      "old_offset": 88,
+      "signatures": []
+    },
+    "entity.FutureVisualState": {
+      "parent": "entity",
+      "old_offset": 288,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "48895b0848895b10ff09488b932001000048896b204885",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 655617
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "c74881c4800000005fc3488b89200100004885c9741f41",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 664397
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4533c044898734010000488b97200100004885d2742b48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 678838
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00000048898720010000488b8720010000488b5c243048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 678919
+        }
+      ]
+    },
+    "entity.IsDead": {
+      "parent": "entity",
+      "old_offset": 226,
+      "signatures": []
+    },
+    "entity.NetworkId": {
+      "parent": "entity",
+      "old_offset": 1756,
+      "signatures": []
+    },
+    "entity.NetworkIdPlayer": {
+      "parent": "entity",
+      "old_offset": 1764,
+      "signatures": []
+    },
+    "entity.Stamina": {
+      "parent": "entity",
+      "old_offset": 1700,
+      "signatures": []
+    },
+    "entity.Type": {
+      "parent": "entity",
+      "old_offset": 384,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00003b052842b400751c488b8d80010000488d96640100",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 822590
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "c14883e0f0e8ebefb100488b8d80010000482be04c8bc7",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 822661
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "ade07c0000e976020000488b8d80010000488d95903c00",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 823208
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b90010000e87ff32600488b8b80010000e873f3260048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 831633
+        }
+      ]
+    },
+    "entity.VisualState": {
+      "parent": "entity",
+      "old_offset": 456,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "732c752e0f2e73307528488b87c80100004883c02cf30f",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 372252
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "20837b18007565488b03488b8dc8010000488b96a80000",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 375533
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "498b068b570c488b0c06488b99c801000033c985d27e6b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 379818
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "40488bda488b01ff5010488b88c80100008b412089038b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 592243
+        }
+      ]
+    },
+    "entity_owner.Owner": {
+      "parent": "entity_owner",
+      "old_offset": 160,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "000000c681a800000001488b89a0000000e8353d2f0048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 340911
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "ff1048c7436800000000488b8ba0000000e8ba6f2e0048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 341066
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "704d8bf0ff159becba00488bbda00000008b95ac000000",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 342397
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4883c170ff157bebba00488bbda00000008b95ac000000",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 342685
+        }
+      ]
+    },
+    "entitytype.ConfigName": {
+      "parent": "entitytype",
+      "old_offset": 208,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "2848894310e81b010000488bb7d00000004885f6741b48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 579045
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bd8000000e846fdffff488b8bd00000004885c9741f48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 580314
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "74c5ffc33bda72eeebbd488b8fd0000000bbffffffff48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 591014
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "ff488b4b30e8282fb200488b8bd0000000e88cdc270048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 771960
+        }
+      ]
+    },
+    "entitytype.ModelName": {
+      "parent": "entitytype",
+      "old_offset": 176,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "5f5ec3488b07488b5210488b98b00000004885d2740948",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 369885
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00000000eb5b33dbeb5f488b9bb00000004885db75508d",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 556949
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4885c0746d48895c2450488b98b00000004885db75478d",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 559057
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "004c8ba5b800000033f64c8badb00000004c8bfa488b9d",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 708164
+        }
+      ]
+    },
+    "entitytype.TypeName": {
+      "parent": "entitytype",
+      "old_offset": 152,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "fa00488bcbe8642d0300488b9f98000000488d15deaaf1",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 358620
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "488b02488bda488b49304c8b8098000000498b40588b50",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 361399
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "cfe8aa0a000085c07514488b87980000008b481c894b10",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 376202
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b07448bc78bd5498bcf488b8098000000ffd08bf8458b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 541467
+        }
+      ]
+    },
+    "infected.Skeleton": {
+      "parent": "infected",
+      "old_offset": 1648,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "190000488d15a27baa00488b857006000041b803000000",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1524710
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4883ec20488bda498bf8488b9270060000488bf1e83c23",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4779477
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4883ec20488bfa498bd8488b9270060000488bf1e8dc10",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4783173
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "30488bce89868c000000488b9770060000e81101000048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4783267
+        }
+      ]
+    },
+    "inventory.Hands": {
+      "parent": "inventory",
+      "old_offset": 432,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "c9740733d2e81d881600488b8bb00100004885c9742283",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1360515
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "feffff4881ec60020000488bb5b00100004c8bea448b0d",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1469584
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "08488b4d404889742460488b85b0010000488d15ad23aa",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1556757
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "08488b4d304889742468488b85b0010000488985300600",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1588541
+        }
+      ]
+    },
+    "network.IdentityCount": {
+      "parent": "network",
+      "old_offset": 28,
+      "signatures": []
+    },
+    "network.ManagerNetworkClient": {
+      "parent": "network",
+      "old_offset": 80,
+      "signatures": []
+    },
+    "network.PlayerName": {
+      "parent": "network",
+      "old_offset": 248,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "75b8004889ab08010000488b8bf80000004885c9740ce8",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 393611
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8300010000488d4c2420488b93f8000000e8e774000044",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 403757
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b8300010000488d4daf488b93f8000000e8534e000044",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 413633
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00004889ac2498000000488ba9f80000004885ed0f8497",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 663974
+        }
+      ]
+    },
+    "network.ScoreboardPtr": {
+      "parent": "network",
+      "old_offset": 24,
+      "signatures": []
+    },
+    "network.ScoreboardSize": {
+      "parent": "network",
+      "old_offset": 36,
+      "signatures": []
+    },
+    "network.ThirdPersonFlag": {
+      "parent": "network",
+      "old_offset": 156,
+      "signatures": []
+    },
+    "player.DamageManager": {
+      "parent": "player",
+      "old_offset": 392,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "63c2488bb4c7500600004c8bb5880100004c8d4c246033",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 730271
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "420f11443a60488b4350488b8b880100004903c0418831",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 826075
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "010000488d15fa6ce200488bbd8801000041b8ffffffff",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1357062
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4c2440e8a39df0ffeb4b488b85880100004885c0741448",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1357359
+        }
+      ]
+    },
+    "player.InputController": {
+      "parent": "player",
+      "old_offset": 2024,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "48895c245048897c2458488bbee8070000e8d77d0c0048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5157453
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "0001488bcee8e7210000488b8ee80700000f28d6488bd6",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5159641
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bc8488bd7e8c1ad2100488b8ee8070000488b01ff5040",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5159855
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "50088be8f30f10442464488b8ee8070000f30f104c2468",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5160050
+        }
+      ]
+    },
+    "player.Inventory": {
+      "parent": "player",
+      "old_offset": 1616,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "0f100587f77a00c3cccc488b8150060000c3cccccccccc",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4551728
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8f50060000e86bcaffff488b8f50060000488bd7488b01",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4651797
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "cc40534883ec20488bd9488b8950060000488b01ff5020",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4657225
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b571033c083faff7414488b8b50060000488b01ff9080",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4666873
+        }
+      ]
+    },
+    "player.RecordValue": {
+      "parent": "player",
+      "old_offset": 44,
+      "signatures": []
+    },
+    "player.Skeleton": {
+      "parent": "player",
+      "old_offset": 2016,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "e859949d004885c07427488b98e00700004c8ba0000200",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 2183154
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "070000498980d8070000488b82e0070000498980e00700",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 2484319
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "58488bf10f834c150000488b89e0070000488958e04c89",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5150114
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b5c24304883c4205fc3488b8be0070000488bd7e8b73c",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 5155690
+        }
+      ]
+    },
+    "player.StatsContainer": {
+      "parent": "player",
+      "old_offset": 1776,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bd0498bcfe83e91fcff488b8df00600008905bdfee800",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 1417138
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8bd0488bcfe8972eeeff488b8df0060000890502d8da00",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 2359897
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "e9ff488bcfe85b25e9ff488b8bf006000033ff4889bbe8",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4882101
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "488bcf4c8b80e8060000488b98f0060000e8bd9effff48",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 4882903
+        }
+      ]
+    },
+    "player_identity.Name": {
+      "parent": "player_identity",
+      "old_offset": 176,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "5f5ec3488b07488b5210488b98b00000004885d2740948",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 369885
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00000000eb5b33dbeb5f488b9bb00000004885db75508d",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 556949
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4885c0746d48895c2450488b98b00000004885db75478d",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 559057
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "004c8ba5b800000033f64c8badb00000004c8bfa488b9d",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 708164
+        }
+      ]
+    },
+    "scoreboard_identity.Name": {
+      "parent": "scoreboard_identity",
+      "old_offset": 248,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "75b8004889ab08010000488b8bf80000004885c9740ce8",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 393611
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8300010000488d4c2420488b93f8000000e8e774000044",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 403757
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b8300010000488d4daf488b93f8000000e8534e000044",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 413633
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "00004889ac2498000000488ba9f80000004885ed0f8497",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 663974
+        }
+      ]
+    },
+    "scoreboard_identity.NetworkId": {
+      "parent": "scoreboard_identity",
+      "old_offset": 48,
+      "signatures": []
+    },
+    "scoreboard_identity.SteamId": {
+      "parent": "scoreboard_identity",
+      "old_offset": 160,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "000000c681a800000001488b89a0000000e8353d2f0048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 340911
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "ff1048c7436800000000488b8ba0000000e8ba6f2e0048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 341066
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "704d8bf0ff159becba00488bbda00000008b95ac000000",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 342397
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "4883c170ff157bebba00488bbda00000008b95ac000000",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 342685
+        }
+      ]
+    },
+    "skeleton.AnimClass1": {
+      "parent": "skeleton",
+      "old_offset": 152,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "fa00488bcbe8642d0300488b9f98000000488d15deaaf1",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 358620
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "488b02488bda488b49304c8b8098000000498b40588b50",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 361399
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "cfe8aa0a000085c07514488b87980000008b481c894b10",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 376202
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b07448bc78bd5498bcf488b8098000000ffd08bf8458b",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 541467
+        }
+      ]
+    },
+    "skeleton.AnimClass2": {
+      "parent": "skeleton",
+      "old_offset": 40,
+      "signatures": []
+    },
+    "skeleton.AnimComponent": {
+      "parent": "skeleton",
+      "old_offset": 280,
+      "signatures": [
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "75b8004889ab28010000488b8b180100004885c9740ce8",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 393563
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8b30010000e890232a00488b8b18010000e884232a0048",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 622720
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "8594000000e872561200488b85180100004885c0741948",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 680750
+        },
+        {
+          "kind": "field_disp",
+          "before": 10,
+          "instr_len": 7,
+          "disp_off": 13,
+          "disp_size": 4,
+          "bytes": "24404c8d442450488bcf488b90180100004883c22ce8c6",
+          "wildcards": [
+            13,
+            14,
+            15,
+            16
+          ],
+          "old_instr_rva": 790282
+        }
+      ]
+    }
+  },
+  "native_paths": {
+    "native.Is3rdPersonDisabled": {
+      "string": "Is3rdPersonDisabled",
+      "old_rva": 9359712
+    },
+    "native.IsCrosshairDisabled": {
+      "string": "IsCrosshairDisabled",
+      "old_rva": 9359760
+    },
+    "native.CameraViewChanged": {
+      "string": "CameraViewChanged",
+      "old_rva": 3294560
+    }
+  },
+  "code_sites": {
+    "code.ThirdPersonAllowWriter": {
+      "old_rva": 11031186
+    },
+    "code.ThirdPersonAllowCopy0": {
+      "old_rva": 5487124
+    },
+    "code.ThirdPersonAllowCopy1": {
+      "old_rva": 6244916
+    },
+    "code.AimingModelRecoil": {
+      "old_rva": 5148966
+    },
+    "code.CameraFovUpdate": {
+      "old_rva": 7996208
+    },
+    "code.DayZPlayerGetName": {
+      "old_rva": 5132576
+    },
+    "code.AllocCollisionBuffer": {
+      "old_rva": 623504
+    }
+  },
+  "old_values": {
+    "modbase.FOV_Context": 16809072,
+    "modbase.FovBase": 2500,
+    "modbase.Network": 16837472,
+    "modbase.NetworkManager": 16837584,
+    "modbase.PhysicsWorld": 69624544,
+    "modbase.ScopeFovCtx": 69613744,
+    "modbase.Tick": 16726312,
+    "modbase.World": 69611496,
+    "world.BulletCount": 3592,
+    "world.BulletList": 3584,
+    "world.Camera": 440,
+    "world.Day": 10612,
+    "world.DayTime": 10616,
+    "world.EyeAccom": 10604,
+    "world.FarEntList": 4240,
+    "world.FarTableSize": 4248,
+    "world.GrassOffline": 3056,
+    "world.Hour": 10608,
+    "world.ItemList": 8288,
+    "world.ItemListSize": 8296,
+    "world.LocalPlayer": 10592,
+    "world.NearEntList": 3912,
+    "world.NoGrass": 3072,
+    "world.PlayerOn": 10600,
+    "world.SlowEntList": 8208,
+    "world.SlowEntValidCount": 8080,
+    "world.SlowTableSize": 8216,
+    "world.WeatherController": 29080,
+    "camera.GetProjectionD1": 208,
+    "camera.GetProjectionD2": 220,
+    "camera.InvertedViewForward": 32,
+    "camera.InvertedViewRight": 8,
+    "camera.InvertedViewTranslation": 44,
+    "camera.InvertedViewUp": 20,
+    "camera.ViewPortSize": 88,
+    "entity.FutureVisualState": 288,
+    "entity.IsDead": 226,
+    "entity.NetworkId": 1756,
+    "entity.NetworkIdPlayer": 1764,
+    "entity.Stamina": 1700,
+    "entity.Type": 384,
+    "entity.VisualState": 456,
+    "inventory.Hands": 432,
+    "player.DamageManager": 392,
+    "player.InputController": 2024,
+    "player.Inventory": 1616,
+    "player.RecordValue": 44,
+    "player.Skeleton": 2016,
+    "player.StatsContainer": 1776,
+    "network.IdentityCount": 28,
+    "network.ManagerNetworkClient": 80,
+    "network.PlayerName": 248,
+    "network.ScoreboardPtr": 24,
+    "network.ScoreboardSize": 36,
+    "network.ThirdPersonFlag": 156,
+    "scoreboard_identity.Name": 248,
+    "scoreboard_identity.NetworkId": 48,
+    "scoreboard_identity.SteamId": 160,
+    "player_identity.Name": 176,
+    "entity_owner.Owner": 160,
+    "infected.Skeleton": 1648,
+    "entitytype.ConfigName": 208,
+    "entitytype.ModelName": 176,
+    "entitytype.TypeName": 152,
+    "anim.AnimComponent": 280,
+    "anim.MatrixArray": 3048,
+    "anim.MatrixB": 84,
+    "skeleton.AnimClass1": 152,
+    "skeleton.AnimClass2": 40,
+    "skeleton.AnimComponent": 280,
+    "code.ThirdPersonAllowWriter": 11031186,
+    "code.ThirdPersonAllowCopy0": 5487124,
+    "code.ThirdPersonAllowCopy1": 6244916,
+    "code.AimingModelRecoil": 5148966,
+    "code.CameraFovUpdate": 7996208,
+    "code.DayZPlayerGetName": 5132576,
+    "code.AllocCollisionBuffer": 623504
+  }
+}

@@ -1,0 +1,55 @@
+# Dependencies & local env
+**/node_modules/
+**/.next/
+**/.env
+**/.env.*
+!**/.env.example
+**/data/*.sqlite
+**/data/*.sqlite-*
+
+# Native / .NET build outputs
+bin/
+build/
+build_imgui_test/
+injector/build/
+panel-csharp/bin/
+panel-csharp/obj/
+driver/bin/
+driver/obj/
+launcher/bin/
+*.user
+.vs/
+**/x64/
+**/Release/
+**/Debug/
+**/*.tlog/
+**/*.recipe
+**/*.lastbuildstate
+**/CMakeCache.txt
+**/CMakeFiles/
+*.vcxproj.user
+
+# Compile / probe junk
+*.obj
+*.o
+*.pdb
+*.map
+*_probe.exe
+_probe_*.exe
+inject.log
+oak_imgui*.log
+oak_panel_*.png
+protect_auth.flag
+oak_dev_unlock
+
+# Local launcher overrides (never ship absolute developer paths)
+**/oak.launcher.json
+!**/oak.launcher.json.example
+
+# Python
+**/__pycache__/
+*.pyc
+
+# NuGet/MSBuild obj (never commit)
+**/obj/
+

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oak Admin</title>
+  <style>
+:root {
+  --bg: #050505; --panel: #121212; --bar: #1b1b1b; --line: #282828;
+  --txt: #e8e8e8; --mid: #909090; --dim: #5c5c5c; --acc: #fff;
+  --ok: #8fcb8f; --warn: #d8be7c; --bad: #d69185;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font: 13px/1.45 "Segoe UI", system-ui, sans-serif;
+  background: var(--bg); color: var(--txt); min-height: 100vh;
+}
+input, select, button, textarea {
+  font: inherit; color: var(--txt); background: #0a0a0a;
+  border: 1px solid var(--line); border-radius: 3px; padding: 8px 10px;
+}
+button { cursor: pointer; background: #1f1f1f; }
+button.primary { background: var(--acc); color: #050505; font-weight: 600; border: 0; }
+button:disabled { opacity: .4; cursor: default; }
+.wrap { max-width: 360px; margin: 12vh auto; padding: 24px; }
+.card { background: var(--panel); border: 1px solid var(--line); padding: 18px; margin-bottom: 16px; }
+h1 { font-size: 18px; margin: 0 0 4px; }
+h2 { font-size: 14px; margin: 0 0 12px; color: var(--mid); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { color: var(--dim); font-size: 11px; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+th { color: var(--dim); font-weight: 600; font-size: 11px; }
+.muted { color: var(--mid); }
+.ok { color: var(--ok); } .bad { color: var(--bad); } .warn { color: var(--warn); }
+.mono { font-family: Consolas, monospace; }
+#err { color: var(--bad); margin-top: 10px; white-space: pre-wrap; }
+#rawCodes { background: #0a0a0a; border: 1px solid var(--line); padding: 12px; margin-top: 12px;
+  font-family: Consolas, monospace; white-space: pre-wrap; word-break: break-all; display: none; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.stat { background: var(--bar); border: 1px solid var(--line); padding: 12px; }
+.stat b { display: block; font-size: 18px; margin-top: 4px; }
+#appView { display: none; min-height: 100vh; width: 100%; }
+.admin-shell { display: flex; min-height: 100vh; width: 100%; }
+.admin-nav {
+  width: 200px; flex-shrink: 0; background: #0c0c0c; border-right: 1px solid var(--line);
+  padding: 18px 12px; display: flex; flex-direction: column; gap: 4px;
+  position: sticky; top: 0; height: 100vh;
+}
+.admin-brand { font-size: 16px; font-weight: 700; padding: 4px 8px 14px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.admin-brand span { display: block; font-size: 11px; color: var(--mid); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+.nav-item {
+  width: 100%; text-align: left; background: transparent; border: 1px solid transparent;
+  color: var(--mid); padding: 9px 10px; font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
+}
+.nav-item:hover { color: var(--txt); background: #161616; }
+.nav-item.is-active { background: var(--acc); color: #050505; border-color: var(--acc); }
+.admin-nav-foot { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); }
+.admin-main { flex: 1; padding: 24px; max-width: 1100px; }
+.admin-panel { display: none; }
+.admin-panel.is-visible { display: block; }
+@media (max-width: 800px) {
+  .admin-shell { flex-direction: column; }
+  .admin-nav { width: 100%; height: auto; position: static; flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--line); }
+  .admin-brand { width: 100%; }
+  .nav-item { width: auto; }
+  .admin-nav-foot { width: 100%; margin-top: 8px; }
+  .admin-main { padding: 16px; }
+}
+</style>
+</head>
+<body>
+  <div id="loginView" class="wrap">
+    <div class="card">
+      <h1>OAK Admin</h1>
+      <p class="muted" style="margin-top:0">Sign in with an admin account</p>
+      <div class="field" style="margin-bottom:10px">
+        <label>USERNAME / EMAIL</label>
+        <input id="login" autocomplete="username" />
+      </div>
+      <div class="field" style="margin-bottom:14px">
+        <label>PASSWORD</label>
+        <input id="password" type="password" autocomplete="current-password" />
+      </div>
+      <button class="primary" id="loginBtn" style="width:100%">Sign in</button>
+      <div id="err"></div>
+    </div>
+  </div>
+
+  <div id="appView">
+    <div class="admin-shell">
+      <aside class="admin-nav">
+        <div class="admin-brand">OAK<span>Admin</span></div>
+        <button type="button" class="nav-item is-active" data-panel="overview">Overview</button>
+        <button type="button" class="nav-item" data-panel="activity">Activity</button>
+        <button type="button" class="nav-item" data-panel="alerts">Alerts</button>
+        <button type="button" class="nav-item" data-panel="releases">Releases</button>
+        <button type="button" class="nav-item" data-panel="site">Site</button>
+        <button type="button" class="nav-item" data-panel="forum">Forum</button>
+        <button type="button" class="nav-item" data-panel="commerce">Commerce</button>
+        <button type="button" class="nav-item" data-panel="support">Support</button>
+        <button type="button" class="nav-item" data-panel="users">Users</button>
+        <div class="admin-nav-foot">
+          <div class="muted" id="who" style="font-size:12px;margin-bottom:10px;padding:0 4px"></div>
+          <button id="logoutBtn" style="width:100%">Sign out</button>
+        </div>
+      </aside>
+      <main class="admin-main">
+        <section class="admin-panel is-visible" data-panel="overview">
+          <div class="card">
+            <h2>Overview</h2>
+            <div class="stats" id="stats"></div>
+            <p class="muted" id="releaseInfo" style="margin-top:12px"></p>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="activity">
+          <div class="card">
+            <h2>Analytics (7d)</h2>
+            <div class="stats" id="analyticsStats"></div>
+            <h2 style="margin-top:18px">Online now (15m)</h2>
+            <div id="onlineBox" class="muted">—</div>
+            <h2 style="margin-top:18px">Recent downloads</h2>
+            <div style="overflow:auto;max-height:220px">
+              <table>
+                <thead><tr><th>Kind</th><th>Version</th><th>User</th><th>When</th></tr></thead>
+                <tbody id="dlBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="alerts">
+          <div class="card">
+            <h2>Security alerts</h2>
+            <div class="row" style="margin-bottom:12px">
+              <select id="alertStatus">
+                <option value="open">open</option>
+                <option value="acked">acked</option>
+                <option value="resolved">resolved</option>
+                <option value="dismissed">dismissed</option>
+                <option value="all">all</option>
+              </select>
+              <select id="alertSeverity">
+                <option value="all">all severities</option>
+                <option value="critical">critical</option>
+                <option value="high">high</option>
+                <option value="medium">medium</option>
+                <option value="low">low</option>
+              </select>
+              <button id="refreshAlerts">Refresh</button>
+            </div>
+            <div class="stats" id="alertStats" style="margin-bottom:12px"></div>
+            <div style="overflow:auto;max-height:420px">
+              <table>
+                <thead>
+                  <tr><th>Sev</th><th>Category</th><th>Title</th><th>User</th><th>Count</th><th>Updated</th><th></th></tr>
+                </thead>
+                <tbody id="alertsBody"></tbody>
+              </table>
+            </div>
+            <p class="muted" style="margin-top:10px">Discord webhook + min severity live under Site.</p>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="releases">
+          <div class="card">
+            <h2>Upload client (DLL)</h2>
+            <p class="muted">Customers never get a public link. OakLauncher pulls this via authenticated API.</p>
+            <div class="row">
+              <div class="field">
+                <label>PRODUCT</label>
+                <select id="clientSlug">
+                  <option value="dayz">dayz</option>
+                  <option value="rust">rust</option>
+                  <option value="eft">eft</option>
+                  <option value="cs2">cs2</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>VERSION</label>
+                <input id="clientVer" placeholder="1.4.1" />
+              </div>
+              <div class="field">
+                <label>FILE (.dll)</label>
+                <input id="clientFile" type="file" accept=".dll,.bin" />
+              </div>
+              <button class="primary" id="uploadClientBtn">Upload client</button>
+            </div>
+            <p id="clientUploadMsg" class="muted"></p>
+          </div>
+          <div class="card">
+            <h2>Upload launcher</h2>
+            <p class="muted">Shared loader for /download — public download link.</p>
+            <div class="row">
+              <div class="field">
+                <label>VERSION</label>
+                <input id="launcherVer" placeholder="1.0.0" />
+              </div>
+              <div class="field">
+                <label>FILE (.exe / .zip)</label>
+                <input id="launcherFile" type="file" accept=".exe,.zip" />
+              </div>
+              <button class="primary" id="uploadLauncherBtn">Upload launcher</button>
+            </div>
+            <p id="launcherUploadMsg" class="muted"></p>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="site">
+          <div class="card">
+            <h2>Site settings</h2>
+            <div class="field" style="margin-bottom:10px">
+              <label>ANNOUNCEMENT BANNER</label>
+              <textarea id="setAnnouncement" rows="2" style="width:100%"></textarea>
+            </div>
+            <div class="row">
+              <label style="display:flex;gap:8px;align-items:center">
+                <input id="setMaintenance" type="checkbox" /> Maintenance mode (blocks inject)
+              </label>
+            </div>
+            <div class="field" style="margin:10px 0">
+              <label>DISCORD URL</label>
+              <input id="setDiscord" style="width:100%" />
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>CHANGELOG EXTRA</label>
+              <textarea id="setChangelog" rows="4" style="width:100%"></textarea>
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>ANALYTICS SCRIPT URL</label>
+              <input id="setAnalyticsSrc" style="width:100%" placeholder="https://plausible.io/js/script.js" />
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>ANALYTICS DATA-DOMAIN</label>
+              <input id="setAnalyticsDomain" style="width:100%" placeholder="yourdomain.com" />
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>ALERT DISCORD WEBHOOK</label>
+              <input id="setAlertWebhook" style="width:100%" placeholder="https://discord.com/api/webhooks/" />
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>ALERT MIN SEVERITY</label>
+              <select id="setAlertMinSev">
+                <option value="low">low</option>
+                <option value="medium">medium</option>
+                <option value="high" selected>high</option>
+                <option value="critical">critical</option>
+              </select>
+            </div>
+            <button class="primary" id="saveSettingsBtn">Save settings</button>
+            <p id="settingsMsg" class="muted"></p>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="forum">
+          <div class="card">
+            <h2>Forum reports</h2>
+            <div class="row" style="margin-bottom:10px">
+              <div class="field">
+                <label>STATUS</label>
+                <select id="reportStatus">
+                  <option value="open" selected>Open</option>
+                  <option value="actioned">Actioned</option>
+                  <option value="dismissed">Dismissed</option>
+                </select>
+              </div>
+              <button id="loadReportsBtn">Refresh</button>
+            </div>
+            <div id="reportList" class="muted">Not loaded.</div>
+            <hr style="border:none;border-top:1px solid var(--line);margin:16px 0" />
+            <h2>Forum mute</h2>
+            <div class="row">
+              <div class="field">
+                <label>USER ID</label>
+                <input id="muteUserId" placeholder="uuid" />
+              </div>
+              <div class="field">
+                <label>HOURS (0 = unmute)</label>
+                <input id="muteHours" type="number" value="24" />
+              </div>
+              <button class="primary" id="muteBtn">Apply mute</button>
+            </div>
+            <p id="muteMsg" class="muted"></p>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="commerce">
+          <div class="card">
+            <h2>Generate redeem codes</h2>
+            <div class="row">
+              <div class="field">
+                <label>PLAN</label>
+                <select id="planId">
+                  <option value="day1">1 Day</option>
+                  <option value="day7">7 Day</option>
+                  <option value="day30" selected>30 Day</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>COUNT</label>
+                <input id="count" type="number" min="1" max="100" value="1" style="width:80px" />
+              </div>
+              <div class="field" style="flex:1;min-width:160px">
+                <label>NOTE</label>
+                <input id="note" placeholder="optional" />
+              </div>
+              <button class="primary" id="genBtn">Generate</button>
+            </div>
+            <div id="rawCodes"></div>
+          </div>
+          <div class="card">
+            <h2>Purchases</h2>
+            <div class="row" style="margin-bottom:12px">
+              <button id="refreshPurchases">Refresh</button>
+            </div>
+            <div style="overflow:auto">
+              <table>
+                <thead>
+                  <tr><th>When</th><th>User</th><th>Plan</th><th>Provider</th><th>Status</th><th>USD</th><th>Id</th></tr>
+                </thead>
+                <tbody id="purchasesBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h2>Codes</h2>
+            <div class="row" style="margin-bottom:12px">
+              <div class="field">
+                <label>STATUS</label>
+                <select id="filterStatus">
+                  <option value="">all</option>
+                  <option value="unused">unused</option>
+                  <option value="redeemed">redeemed</option>
+                  <option value="revoked">revoked</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>PLAN</label>
+                <select id="filterPlan">
+                  <option value="">all</option>
+                  <option value="day1">day1</option>
+                  <option value="day7">day7</option>
+                  <option value="day30">day30</option>
+                </select>
+              </div>
+              <button id="refreshCodes">Refresh</button>
+            </div>
+            <div style="overflow:auto">
+              <table>
+                <thead>
+                  <tr><th>Hint</th><th>Plan</th><th>Days</th><th>Status</th><th>Created</th><th>Buyer</th><th>Redeemed by</th><th></th></tr>
+                </thead>
+                <tbody id="codesBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="support">
+          <div class="card">
+            <h2>Support tickets</h2>
+            <div class="row" style="margin-bottom:12px">
+              <select id="ticketStatus">
+                <option value="">all</option>
+                <option value="open">open</option>
+                <option value="pending">pending</option>
+                <option value="resolved">resolved</option>
+                <option value="closed">closed</option>
+              </select>
+              <button id="refreshTickets">Refresh</button>
+            </div>
+            <div style="overflow:auto">
+              <table>
+                <thead>
+                  <tr><th>Subject</th><th>User</th><th>Category</th><th>Status</th><th>Updated</th><th></th></tr>
+                </thead>
+                <tbody id="ticketsBody"></tbody>
+              </table>
+            </div>
+            <div id="ticketThread" style="margin-top:14px;display:none">
+              <h2>Thread</h2>
+              <div id="ticketMsgs"></div>
+              <div class="row" style="margin-top:10px">
+                <input id="ticketReply" placeholder="Staff reply" style="flex:1" />
+                <button id="ticketReplyBtn" class="primary">Reply</button>
+                <select id="ticketSetStatus">
+                  <option value="open">open</option>
+                  <option value="pending">pending</option>
+                  <option value="resolved">resolved</option>
+                  <option value="closed">closed</option>
+                </select>
+                <button id="ticketStatusBtn">Set status</button>
+              </div>
+              <p id="ticketMsg" class="muted"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="users">
+          <div class="card">
+            <h2>Users / remaining time</h2>
+            <div class="row" style="margin-bottom:12px">
+              <input id="userQ" placeholder="search username/email" style="flex:1" />
+              <button id="refreshUsers">Refresh</button>
+            </div>
+            <div style="overflow:auto">
+              <table>
+                <thead>
+                  <tr><th>User</th><th>Role</th><th>License</th><th>Plan</th><th>Expires</th><th>Remaining</th><th>HWID</th><th></th></tr>
+                </thead>
+                <tbody id="usersBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const API = "";
+    let user = null;
+
+    const $ = (id) => document.getElementById(id);
+    const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+    async function api(path, opts = {}) {
+      const headers = {
+        "Content-Type": "application/json",
+        "X-Oak-Client": "admin",
+        ...(opts.headers || {}),
+      };
+      // Access JWT lives in an httpOnly cookie — never sessionStorage.
+      let res = await fetch(API + path, { ...opts, headers, credentials: "same-origin" });
+      if (res.status === 401 && path !== "/v1/auth/refresh" && path !== "/v1/auth/login") {
+        const refreshed = await fetch(API + "/v1/auth/refresh", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-Oak-Client": "admin" },
+          credentials: "same-origin",
+          body: "{}",
+        });
+        if (refreshed.ok) {
+          res = await fetch(API + path, { ...opts, headers, credentials: "same-origin" });
+        }
+      }
+      const text = await res.text();
+      let body = null;
+      try { body = text ? JSON.parse(text) : null; } catch { body = { error: text }; }
+      if (!res.ok) throw new Error(body?.error || res.statusText);
+      return body;
+    }
+
+    function fmtRemaining(lic) {
+      if (!lic) return "—";
+      if (lic.lifetime) return "lifetime";
+      if (lic.status !== "active") return "—";
+      const s = lic.remainingSeconds ?? 0;
+      const d = Math.floor(s / 86400);
+      const h = Math.floor((s % 86400) / 3600);
+      return d + "d " + h + "h";
+    }
+
+    function showApp() {
+      $("loginView").style.display = "none";
+      $("appView").style.display = "flex";
+      $("who").textContent = user ? (user.username + " · " + user.email) : "";
+      showPanel(localStorage.getItem("oakAdminPanel") || "overview");
+      loadAll();
+    }
+
+    function showLogin(msg) {
+      user = null;
+      $("appView").style.display = "none";
+      $("loginView").style.display = "block";
+      if (msg) $("err").textContent = msg;
+    }
+
+    async function doLogin() {
+      $("err").textContent = "";
+      try {
+        const body = await api("/v1/auth/login", {
+          method: "POST",
+          body: JSON.stringify({ login: $("login").value.trim(), password: $("password").value }),
+        });
+        if (body.user?.role !== "admin") throw new Error("admin_required");
+        user = body.user;
+        showApp();
+      } catch (e) {
+        $("err").textContent = e.message;
+      }
+    }
+
+    async function doLogout() {
+      try {
+        await api("/v1/auth/logout", { method: "POST", body: "{}" });
+      } catch { /* ignore */ }
+      showLogin("");
+    }
+
+    async function loadOverview() {
+      const o = await api("/v1/admin/overview");
+      const s = o.stats || {};
+      const a = o.analytics || {};
+      $("stats").innerHTML = [
+        ["Users", s.users],
+        ["Active licenses", s.activeLicenses],
+        ["Unused codes", s.unusedCodes],
+        ["HWID bound", s.hwidBound],
+        ["Banned", s.bannedUsers],
+        ["Open alerts", o.alerts?.openTotal],
+      ].map(([k,v]) => `<div class="stat"><span class="muted">${k}</span><b>${v ?? 0}</b></div>`).join("");
+      $("analyticsStats").innerHTML = [
+        ["Page views", a.pageViews],
+        ["Logins", a.logins],
+        ["Registers", a.registers],
+        ["Redeems", a.redeems],
+        ["Inject OK", a.launcherInjectOk],
+        ["Inject fail", a.launcherInjectFail],
+        ["Launcher DLs", a.downloads?.launcher],
+        ["Client DLs", a.downloads?.client],
+        ["Online now", a.onlineNow],
+      ].map(([k,v]) => `<div class="stat"><span class="muted">${k}</span><b>${v ?? 0}</b></div>`).join("");
+      const cc = o.currentClient;
+      const cl = o.currentLauncher;
+      $("releaseInfo").textContent =
+        `Client: ${cc ? cc.version + " @ " + (cc.uploadedAt||"").slice(0,19) : "none"} · ` +
+        `Launcher: ${cl ? cl.version + " @ " + (cl.uploadedAt||"").slice(0,19) : "none"}`;
+    }
+
+    async function loadOnline() {
+      const data = await api("/v1/admin/online");
+      const rows = data.online || [];
+      $("onlineBox").innerHTML = rows.length
+        ? rows.map(u => `${u.username} <span class="muted">(${(u.last_seen_at||"").slice(11,19)})</span>`).join(" · ")
+        : "Nobody in the last 15 minutes.";
+    }
+
+    async function loadDownloads() {
+      const data = await api("/v1/admin/downloads?limit=40");
+      $("dlBody").innerHTML = (data.downloads || []).map(d => `<tr>
+        <td>${d.kind}</td>
+        <td class="mono">${d.version || "—"}</td>
+        <td class="mono muted">${d.user_id ? d.user_id.slice(0,8)+"…" : "—"}</td>
+        <td class="muted">${(d.created_at||"").slice(0,19)}</td>
+      </tr>`).join("") || `<tr><td colspan="4" class="muted">No downloads</td></tr>`;
+    }
+
+    async function loadSettings() {
+      const data = await api("/v1/admin/settings");
+      const s = data.settings || {};
+      $("setAnnouncement").value = s.announcement || "";
+      $("setMaintenance").checked = s.maintenance === "1" || s.maintenance === "true";
+      $("setDiscord").value = s.discord_url || "";
+      $("setChangelog").value = s.changelog_extra || "";
+      $("setAnalyticsSrc").value = s.analytics_src || "";
+      $("setAnalyticsDomain").value = s.analytics_domain || "";
+      $("setAlertWebhook").value = s.alert_discord_webhook || "";
+      $("setAlertMinSev").value = s.alert_min_severity || "high";
+    }
+
+    async function uploadMultipart(path, file, version) {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("version", version);
+      const res = await fetch(API + path, {
+        method: "POST",
+        headers: { "X-Oak-Client": "admin" },
+        credentials: "same-origin",
+        body: fd,
+      });
+      const text = await res.text();
+      let body = null;
+      try { body = text ? JSON.parse(text) : null; } catch { body = { error: text }; }
+      if (!res.ok) throw new Error(body?.error || res.statusText);
+      return body;
+    }
+
+    async function loadAll() {
+      await Promise.all([
+        loadOverview(),
+        loadCodes(),
+        loadUsers(),
+        loadOnline(),
+        loadDownloads(),
+        loadSettings(),
+        loadTickets(),
+        loadAlerts(),
+        loadPurchases(),
+      ]);
+    }
+
+    async function loadPurchases() {
+      const data = await api("/v1/admin/purchases?limit=50");
+      $("purchasesBody").innerHTML = (data.purchases || []).map(p => `<tr>
+        <td class="muted">${esc((p.paidAt || p.createdAt || "").toString().slice(0,19))}</td>
+        <td>${esc(p.username)}<div class="muted">${esc(p.email)}</div></td>
+        <td class="mono">${esc(p.planId)}</td>
+        <td class="mono">${esc(p.provider)}</td>
+        <td>${esc(p.status)}</td>
+        <td class="mono">${esc(p.amountUsd)}</td>
+        <td class="mono muted">${esc((p.id||"").toString().slice(0,8))}…</td>
+      </tr>`).join("") || `<tr><td colspan="7" class="muted">No purchases</td></tr>`;
+    }
+
+    async function loadAlerts() {
+      const st = $("alertStatus").value;
+      const sev = $("alertSeverity").value;
+      const qs = new URLSearchParams({ status: st, severity: sev, limit: "50" });
+      const data = await api("/v1/admin/alerts?" + qs.toString());
+      const c = data.counts || { openTotal: 0, bySeverity: {} };
+      const bs = c.bySeverity || {};
+      $("alertStats").innerHTML = `
+        <div class="stat"><span class="muted">Open</span><b>${c.openTotal||0}</b></div>
+        <div class="stat"><span class="muted">Critical</span><b class="bad">${bs.critical||0}</b></div>
+        <div class="stat"><span class="muted">High</span><b class="warn">${bs.high||0}</b></div>
+        <div class="stat"><span class="muted">Medium</span><b>${bs.medium||0}</b></div>
+        <div class="stat"><span class="muted">Low</span><b>${bs.low||0}</b></div>`;
+      $("alertsBody").innerHTML = (data.alerts || []).map(a => {
+        const sevClass = a.severity === "critical" || a.severity === "high" ? "bad" :
+          a.severity === "medium" ? "warn" : "muted";
+        const actions = a.status === "open" || a.status === "acked"
+          ? `<button data-ack="${esc(a.id)}">Ack</button>
+             <button data-resolve="${esc(a.id)}">Resolve</button>
+             <button data-dismiss="${esc(a.id)}">Dismiss</button>`
+          : `<span class="muted">${esc(a.status)}</span>`;
+        return `<tr>
+          <td class="${sevClass}">${esc(a.severity)}</td>
+          <td class="mono">${esc(a.category)}</td>
+          <td>${esc(a.title)}<div class="muted">${esc(a.summary)}</div></td>
+          <td class="mono">${esc((a.userId||"—").toString().slice(0,8))}</td>
+          <td>${esc(a.count||1)}</td>
+          <td class="muted">${esc((a.updatedAt||"").toString().slice(0,19))}</td>
+          <td>${actions}</td>
+        </tr>`;
+      }).join("") || `<tr><td colspan="7" class="muted">No alerts</td></tr>`;
+      $("alertsBody").querySelectorAll("[data-ack]").forEach(btn => {
+        btn.onclick = async () => {
+          await api("/v1/admin/alerts/" + btn.getAttribute("data-ack") + "/ack", { method: "POST", body: "{}" });
+          await loadAlerts();
+        };
+      });
+      $("alertsBody").querySelectorAll("[data-resolve]").forEach(btn => {
+        btn.onclick = async () => {
+          await api("/v1/admin/alerts/" + btn.getAttribute("data-resolve") + "/resolve", {
+            method: "POST", body: JSON.stringify({ note: "resolved in admin" }),
+          });
+          await loadAlerts();
+        };
+      });
+      $("alertsBody").querySelectorAll("[data-dismiss]").forEach(btn => {
+        btn.onclick = async () => {
+          await api("/v1/admin/alerts/" + btn.getAttribute("data-dismiss") + "/dismiss", {
+            method: "POST", body: JSON.stringify({ note: "dismissed" }),
+          });
+          await loadAlerts();
+        };
+      });
+    }
+
+    let activeTicketId = null;
+    async function loadTickets() {
+      const st = $("ticketStatus").value;
+      const data = await api("/v1/admin/tickets" + (st ? "?status=" + encodeURIComponent(st) : ""));
+      $("ticketsBody").innerHTML = (data.tickets || []).map(t => `<tr>
+        <td>${esc(t.subject)}</td>
+        <td>${esc(t.username)}<div class="muted">${esc(t.email)}</div></td>
+        <td class="mono">${esc(t.category)}</td>
+        <td>${esc(t.status)}</td>
+        <td class="muted">${esc((t.updated_at||"").slice(0,19))}</td>
+        <td><button data-ticket="${esc(t.id)}">Open</button></td>
+      </tr>`).join("") || `<tr><td colspan="6" class="muted">No tickets</td></tr>`;
+      $("ticketsBody").querySelectorAll("[data-ticket]").forEach(btn => {
+        btn.onclick = () => openAdminTicket(btn.getAttribute("data-ticket"));
+      });
+    }
+
+    async function openAdminTicket(id) {
+      activeTicketId = id;
+      const data = await api("/v1/tickets/" + id);
+      $("ticketThread").style.display = "block";
+      $("ticketSetStatus").value = data.ticket.status;
+      $("ticketMsgs").innerHTML = (data.messages || []).map(m =>
+        `<div style="padding:8px 0;border-bottom:1px solid var(--line)">
+          <div class="muted">${esc(m.username)}${m.isStaff?" (staff)":""} · ${esc((m.createdAt||"").slice(0,19))}</div>
+          <div style="white-space:pre-wrap">${esc(m.body)}</div>
+        </div>`
+      ).join("");
+    }
+
+    async function loadCodes() {
+      const qs = new URLSearchParams();
+      if ($("filterStatus").value) qs.set("status", $("filterStatus").value);
+      if ($("filterPlan").value) qs.set("planId", $("filterPlan").value);
+      const data = await api("/v1/admin/codes?" + qs.toString());
+      $("codesBody").innerHTML = (data.codes || []).map(c => {
+        const st = c.status === "unused" ? "ok" : c.status === "revoked" ? "bad" : "warn";
+        const revoke = c.status === "unused"
+          ? `<button data-revoke="${c.id}">Revoke</button>` : "";
+        return `<tr>
+          <td class="mono">${esc(c.hint)}</td>
+          <td>${esc(c.planId)}</td>
+          <td>${esc(c.durationDays)}</td>
+          <td class="${st}">${esc(c.status)}</td>
+          <td class="muted">${esc((c.createdAt||"").slice(0,19))}</td>
+          <td class="mono muted">${c.buyerUserId ? esc(c.buyerUserId.slice(0,8))+"…" : "—"}</td>
+          <td class="mono muted">${c.redeemedByUserId ? esc(c.redeemedByUserId.slice(0,8))+"…" : "—"}</td>
+          <td>${revoke}</td>
+        </tr>`;
+      }).join("") || `<tr><td colspan="8" class="muted">No codes</td></tr>`;
+      $("codesBody").querySelectorAll("[data-revoke]").forEach(btn => {
+        btn.onclick = async () => {
+          if (!confirm("Revoke this code?")) return;
+          await api("/v1/admin/codes/" + btn.getAttribute("data-revoke") + "/revoke", { method: "POST", body: "{}" });
+          loadCodes();
+          loadOverview();
+        };
+      });
+    }
+
+    async function loadUsers() {
+      const q = $("userQ").value.trim();
+      const data = await api("/v1/admin/users" + (q ? "?q=" + encodeURIComponent(q) : ""));
+      $("usersBody").innerHTML = (data.users || []).map(u => {
+        const lic = u.license;
+        const banBtn = u.banned
+          ? `<button data-unban="${u.id}">Unban</button>`
+          : `<button data-ban="${u.id}">Ban</button>`;
+        return `<tr>
+          <td>${esc(u.username)}<div class="muted">${esc(u.email)}</div>
+            ${u.banned ? `<div class="bad">BANNED: ${esc(u.banReason || "banned")}</div>` : ""}</td>
+          <td>${esc(u.role)}</td>
+          <td>${esc(lic?.status ?? "—")}</td>
+          <td class="mono">${esc(lic?.plan ?? "—")}</td>
+          <td class="mono muted">${lic?.lifetime ? "—" : esc((lic?.expiresAt || "—").slice(0,19))}</td>
+          <td class="mono">${esc(fmtRemaining(lic))}</td>
+          <td>${u.hwid?.bound ? esc(u.hwid.hint || "bound") : "—"}</td>
+          <td>${banBtn}</td>
+        </tr>`;
+      }).join("") || `<tr><td colspan="8" class="muted">No users</td></tr>`;
+      $("usersBody").querySelectorAll("[data-ban]").forEach(btn => {
+        btn.onclick = async () => {
+          const reason = prompt("Ban reason:", "ToS violation") || "banned";
+          await api("/v1/admin/users/" + btn.getAttribute("data-ban") + "/ban", {
+            method: "POST",
+            body: JSON.stringify({ reason }),
+          });
+          loadUsers();
+          loadOverview();
+        };
+      });
+      $("usersBody").querySelectorAll("[data-unban]").forEach(btn => {
+        btn.onclick = async () => {
+          await api("/v1/admin/users/" + btn.getAttribute("data-unban") + "/unban", {
+            method: "POST",
+            body: "{}",
+          });
+          loadUsers();
+          loadOverview();
+        };
+      });
+    }
+
+    $("loginBtn").onclick = doLogin;
+    $("password").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
+    $("logoutBtn").onclick = () => doLogout();
+    $("refreshCodes").onclick = () => loadCodes();
+    $("refreshPurchases").onclick = () => loadPurchases().catch(() => {});
+    $("refreshUsers").onclick = () => loadUsers();
+    $("filterStatus").onchange = () => loadCodes();
+    $("filterPlan").onchange = () => loadCodes();
+    $("genBtn").onclick = async () => {
+      const body = {
+        planId: $("planId").value,
+        count: Number($("count").value) || 1,
+        note: $("note").value.trim() || undefined,
+      };
+      const data = await api("/v1/admin/codes", { method: "POST", body: JSON.stringify(body) });
+      const raw = (data.codes || []).map(c => c.code).join("\n");
+      const el = $("rawCodes");
+      el.style.display = "block";
+      el.textContent = "Copy these now — they will not be shown again:\n\n" + raw;
+      loadCodes();
+      loadOverview();
+    };
+
+    $("uploadClientBtn").onclick = async () => {
+      const f = $("clientFile").files?.[0];
+      const ver = $("clientVer").value.trim();
+      const slug = $("clientSlug").value.trim() || "dayz";
+      $("clientUploadMsg").textContent = "";
+      if (!f || !ver) { $("clientUploadMsg").textContent = "Need version + file"; return; }
+      try {
+        const r = await uploadMultipart("/v1/admin/releases/client/" + encodeURIComponent(slug), f, ver);
+        $("clientUploadMsg").textContent = "Uploaded " + slug + " " + r.release.version + " (" + r.release.sizeBytes + " bytes)";
+        loadOverview();
+      } catch (e) { $("clientUploadMsg").textContent = e.message; }
+    };
+
+    $("uploadLauncherBtn").onclick = async () => {
+      const f = $("launcherFile").files?.[0];
+      const ver = $("launcherVer").value.trim();
+      $("launcherUploadMsg").textContent = "";
+      if (!f || !ver) { $("launcherUploadMsg").textContent = "Need version + file"; return; }
+      try {
+        const r = await uploadMultipart("/v1/admin/releases/launcher", f, ver);
+        $("launcherUploadMsg").textContent = "Uploaded launcher " + r.release.version;
+        loadOverview();
+      } catch (e) { $("launcherUploadMsg").textContent = e.message; }
+    };
+
+    $("saveSettingsBtn").onclick = async () => {
+      $("settingsMsg").textContent = "";
+      try {
+        await api("/v1/admin/settings", {
+          method: "PATCH",
+          body: JSON.stringify({
+            announcement: $("setAnnouncement").value,
+            maintenance: $("setMaintenance").checked,
+            discord_url: $("setDiscord").value.trim(),
+            changelog_extra: $("setChangelog").value,
+            analytics_src: $("setAnalyticsSrc").value.trim(),
+            analytics_domain: $("setAnalyticsDomain").value.trim(),
+            alert_discord_webhook: $("setAlertWebhook").value.trim(),
+            alert_min_severity: $("setAlertMinSev").value,
+          }),
+        });
+        $("settingsMsg").textContent = "Saved.";
+      } catch (e) { $("settingsMsg").textContent = e.message; }
+    };
+
+    async function loadReports() {
+      const data = await api("/v1/admin/forum/reports?status=" + $("reportStatus").value);
+      const rows = data.reports || [];
+      $("reportList").innerHTML = rows.length
+        ? rows.map(r => `<div style="padding:10px 0;border-bottom:1px solid var(--line)">
+            <div class="muted">${esc(r.reason)} · reported by ${esc(r.reporter)} · ${esc((r.createdAt||"").slice(0,19))}${r.removed ? " · <span class='bad'>already removed</span>" : ""}</div>
+            <div><b>${esc(r.targetType)}</b> by ${esc(r.author || "?")}: ${esc(r.excerpt)}</div>
+            ${r.note ? `<div class="muted">note: ${esc(r.note)}</div>` : ""}
+            <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap">
+              ${r.threadId ? `<span class="mono muted">thread ${esc(r.threadId)}</span>` : ""}
+              ${r.targetType === "post" ? `<button data-delpost="${esc(r.targetId)}">Delete post</button>` : `<button data-delthread="${esc(r.targetId)}">Delete thread</button>`}
+              <button data-report-action="actioned" data-id="${esc(r.id)}">Mark actioned</button>
+              <button data-report-action="dismissed" data-id="${esc(r.id)}">Dismiss</button>
+            </div>
+          </div>`).join("")
+        : "No reports.";
+    }
+
+    $("loadReportsBtn").onclick = () => loadReports().catch(e => { $("reportList").textContent = e.message; });
+    $("reportStatus").onchange = () => loadReports().catch(() => {});
+    $("reportList").addEventListener("click", async (ev) => {
+      const t = ev.target;
+      if (!(t instanceof HTMLElement)) return;
+      try {
+        if (t.dataset.reportAction) {
+          await api("/v1/admin/forum/reports/" + t.dataset.id, {
+            method: "PATCH", body: JSON.stringify({ status: t.dataset.reportAction }),
+          });
+        } else if (t.dataset.delpost) {
+          await api("/v1/forum/posts/" + t.dataset.delpost, { method: "DELETE" });
+        } else if (t.dataset.delthread) {
+          await api("/v1/admin/forum/threads/" + t.dataset.delthread, {
+            method: "PATCH", body: JSON.stringify({ deleted: true }),
+          });
+        } else return;
+        loadReports();
+      } catch (e) { $("reportList").insertAdjacentHTML("afterbegin", `<div class="bad">${esc(e.message)}</div>`); }
+    });
+
+    $("muteBtn").onclick = async () => {
+      $("muteMsg").textContent = "";
+      try {
+        const r = await api("/v1/admin/forum/users/" + $("muteUserId").value.trim() + "/mute", {
+          method: "POST",
+          body: JSON.stringify({ hours: Number($("muteHours").value) || 0 }),
+        });
+        $("muteMsg").textContent = r.mutedUntil ? "Muted until " + r.mutedUntil : "Mute lifted.";
+      } catch (e) { $("muteMsg").textContent = e.message; }
+    };
+
+    $("refreshTickets").onclick = () => loadTickets();
+    $("refreshAlerts").onclick = () => loadAlerts();
+    $("alertStatus").onchange = () => loadAlerts();
+    $("alertSeverity").onchange = () => loadAlerts();
+    $("ticketStatus").onchange = () => loadTickets();
+    $("ticketReplyBtn").onclick = async () => {
+      if (!activeTicketId) return;
+      try {
+        await api("/v1/tickets/" + activeTicketId + "/messages", {
+          method: "POST",
+          body: JSON.stringify({ body: $("ticketReply").value.trim() }),
+        });
+        $("ticketReply").value = "";
+        $("ticketMsg").textContent = "Reply sent.";
+        openAdminTicket(activeTicketId);
+        loadTickets();
+      } catch (e) { $("ticketMsg").textContent = e.message; }
+    };
+    $("ticketStatusBtn").onclick = async () => {
+      if (!activeTicketId) return;
+      try {
+        await api("/v1/admin/tickets/" + activeTicketId, {
+          method: "PATCH",
+          body: JSON.stringify({ status: $("ticketSetStatus").value }),
+        });
+        $("ticketMsg").textContent = "Status updated.";
+        loadTickets();
+        openAdminTicket(activeTicketId);
+      } catch (e) { $("ticketMsg").textContent = e.message; }
+    };
+
+    
+    function showPanel(id) {
+      document.querySelectorAll(".admin-panel").forEach((el) => {
+        el.classList.toggle("is-visible", el.getAttribute("data-panel") === id);
+      });
+      document.querySelectorAll(".nav-item").forEach((el) => {
+        el.classList.toggle("is-active", el.getAttribute("data-panel") === id);
+      });
+      try { localStorage.setItem("oakAdminPanel", id); } catch {}
+      if (id === "forum") {
+        const btn = document.getElementById("loadReportsBtn");
+        if (btn) btn.click();
+      }
+    }
+    document.querySelectorAll(".nav-item").forEach((btn) => {
+      btn.addEventListener("click", () => showPanel(btn.getAttribute("data-panel")));
+    });
+
+    // Restore session from httpOnly cookie if still valid.
+    api("/v1/auth/me").then(me => {
+      if (me.user?.role !== "admin") return showLogin("");
+      user = me.user;
+      showApp();
+    }).catch(() => showLogin(""));
+  </script>
+</body>
+</html>

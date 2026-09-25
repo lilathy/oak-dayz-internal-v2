@@ -1,0 +1,551 @@
+{
+  "modbase.FOV_Context": {
+    "status": "LIVE_PASS",
+    "old": 16809072,
+    "new": 16809072,
+    "votes": 2,
+    "candidates": 1,
+    "note": "obj=0x1d57e1950f0"
+  },
+  "modbase.Network": {
+    "status": "LIVE_PASS",
+    "old": 16837472,
+    "new": 16837472,
+    "votes": 1,
+    "candidates": 1,
+    "note": "obj=0x1d48cc935e0"
+  },
+  "modbase.NetworkManager": {
+    "status": "RESOLVED",
+    "old": 16837584,
+    "new": 16837584,
+    "votes": 8,
+    "candidates": 1
+  },
+  "modbase.PhysicsWorld": {
+    "status": "LIVE_PASS",
+    "old": 69624544,
+    "new": 69624544,
+    "votes": 8,
+    "candidates": 1,
+    "note": "obj=0x1d488be0e70"
+  },
+  "modbase.ScopeFovCtx": {
+    "status": "RESOLVED_DELTA",
+    "old": 69613744,
+    "new": 69613744,
+    "delta": 0
+  },
+  "modbase.Tick": {
+    "status": "LIVE_PASS",
+    "old": 16726312,
+    "new": 16726312,
+    "delta": 0,
+    "note": "raw ok"
+  },
+  "modbase.World": {
+    "status": "LIVE_PASS",
+    "old": 69611496,
+    "new": 69611496,
+    "votes": 8,
+    "candidates": 1,
+    "note": "ptr=0x1d488e98e40"
+  },
+  "world.Camera": {
+    "status": "LIVE_PASS",
+    "old": 440,
+    "new": 440,
+    "votes": 4,
+    "candidates": 1,
+    "note": "cam=0x1d57eeb6420"
+  },
+  "world.LocalPlayer": {
+    "status": "LIVE_PASS",
+    "old": 10592,
+    "new": 10592,
+    "votes": 2,
+    "candidates": 1,
+    "note": "rediscovered ptr=0x1d969afde20 score=105 pos=(7096.62841796875, 356.1656494140625, 14656.908203125)"
+  },
+  "world.PlayerOn": {
+    "status": "LIVE_PASS",
+    "old": 10600,
+    "new": 10600,
+    "note": "cluster"
+  },
+  "world.NearEntList": {
+    "status": "LIVE_PASS",
+    "old": 3912,
+    "new": 3912,
+    "votes": 3,
+    "candidates": 1,
+    "note": "ptr=2033180419216 count=1"
+  },
+  "world.FarEntList": {
+    "status": "LIVE_PASS",
+    "old": 4240,
+    "new": 4240,
+    "votes": 3,
+    "candidates": 1,
+    "note": "ptr=0 count=0"
+  },
+  "world.FarTableSize": {
+    "status": "LIVE_PASS",
+    "old": 4248,
+    "new": 4248,
+    "votes": 3,
+    "candidates": 1,
+    "note": "count=0"
+  },
+  "world.SlowEntList": {
+    "status": "LIVE_PASS",
+    "old": 8208,
+    "new": 8208,
+    "votes": 4,
+    "candidates": 1,
+    "note": "ptr=0 count=0"
+  },
+  "world.SlowTableSize": {
+    "status": "LIVE_PASS",
+    "old": 8216,
+    "new": 8216,
+    "note": "count=0"
+  },
+  "world.BulletList": {
+    "status": "LIVE_PASS",
+    "old": 3584,
+    "new": 3584,
+    "votes": 4,
+    "candidates": 1,
+    "note": "ptr=0 count=0"
+  },
+  "world.BulletCount": {
+    "status": "LIVE_PASS",
+    "old": 3592,
+    "new": 3592,
+    "note": "count=0"
+  },
+  "world.ItemList": {
+    "status": "LIVE_PASS",
+    "old": 8288,
+    "new": 8288,
+    "note": "ptr=0 count=0"
+  },
+  "world.ItemListSize": {
+    "status": "LIVE_PASS",
+    "old": 8296,
+    "new": 8296,
+    "note": "count=0"
+  },
+  "world.NoGrass": {
+    "status": "LIVE_PASS",
+    "old": 3072,
+    "new": 3072,
+    "votes": 4,
+    "candidates": 1,
+    "note": "v=0"
+  },
+  "world.GrassOffline": {
+    "status": "LIVE_PASS",
+    "old": 3056,
+    "new": 3056,
+    "votes": 4,
+    "candidates": 1,
+    "note": "v=0"
+  },
+  "world.EyeAccom": {
+    "status": "LIVE_PASS",
+    "old": 10604,
+    "new": 10604,
+    "note": "v=1.0"
+  },
+  "world.Hour": {
+    "status": "LIVE_PASS",
+    "old": 10608,
+    "new": 10608,
+    "note": "v=24.0"
+  },
+  "world.Day": {
+    "status": "LIVE_PASS",
+    "old": 10612,
+    "new": 10612,
+    "note": "v=0.5235987901687622"
+  },
+  "world.DayTime": {
+    "status": "LIVE_PASS",
+    "old": 10616,
+    "new": 10616,
+    "note": "v=0.0"
+  },
+  "world.WeatherController": {
+    "status": "PENDING_LIVE",
+    "old": 29080,
+    "new": 29080,
+    "note": "no unique field sig; must live-validate"
+  },
+  "world.SlowEntValidCount": {
+    "status": "LIVE_PASS",
+    "old": 8080,
+    "new": 8080,
+    "note": "v=2185440"
+  },
+  "anim.AnimComponent": {
+    "status": "LIVE_PASS",
+    "old": 280,
+    "new": 280,
+    "votes": 4,
+    "candidates": 1,
+    "note": "p=2030241694104"
+  },
+  "anim.MatrixArray": {
+    "status": "LIVE_PASS",
+    "old": 3048,
+    "new": 3048,
+    "votes": 4,
+    "candidates": 1,
+    "note": "anim=0x1d8b3d5c198"
+  },
+  "anim.MatrixB": {
+    "status": "LIVE_PASS",
+    "old": 84,
+    "new": 84,
+    "note": ""
+  },
+  "camera.GetProjectionD1": {
+    "status": "LIVE_PASS",
+    "old": 208,
+    "new": 208,
+    "votes": 4,
+    "candidates": 1,
+    "note": "readable"
+  },
+  "camera.GetProjectionD2": {
+    "status": "LIVE_PASS",
+    "old": 220,
+    "new": 220,
+    "votes": 2,
+    "candidates": 1,
+    "note": "readable"
+  },
+  "camera.InvertedViewForward": {
+    "status": "LIVE_PASS",
+    "old": 32,
+    "new": 32,
+    "note": "readable"
+  },
+  "camera.InvertedViewRight": {
+    "status": "LIVE_PASS",
+    "old": 8,
+    "new": 8,
+    "note": "readable"
+  },
+  "camera.InvertedViewTranslation": {
+    "status": "LIVE_PASS",
+    "old": 44,
+    "new": 44,
+    "note": "pos=(7099.72998046875, 357.0631408691406, 14654.76953125)"
+  },
+  "camera.InvertedViewUp": {
+    "status": "LIVE_PASS",
+    "old": 20,
+    "new": 20,
+    "note": "readable"
+  },
+  "camera.ViewPortSize": {
+    "status": "LIVE_PASS",
+    "old": 88,
+    "new": 88,
+    "note": "readable"
+  },
+  "entity.FutureVisualState": {
+    "status": "RESOLVED_FIELD",
+    "old": 288,
+    "new": 288,
+    "votes": 4,
+    "candidates": 1
+  },
+  "entity.IsDead": {
+    "status": "LIVE_PASS",
+    "old": 226,
+    "new": 226,
+    "note": ""
+  },
+  "entity.NetworkId": {
+    "status": "LIVE_PASS",
+    "old": 1756,
+    "new": 1756,
+    "note": ""
+  },
+  "entity.NetworkIdPlayer": {
+    "status": "LIVE_PASS",
+    "old": 1764,
+    "new": 1764,
+    "note": ""
+  },
+  "entity.Stamina": {
+    "status": "LIVE_PASS",
+    "old": 1700,
+    "new": 1700,
+    "note": ""
+  },
+  "entity.Type": {
+    "status": "LIVE_PASS",
+    "old": 384,
+    "new": 384,
+    "votes": 4,
+    "candidates": 1,
+    "note": "type=2030374554496"
+  },
+  "entity.VisualState": {
+    "status": "LIVE_PASS",
+    "old": 456,
+    "new": 456,
+    "votes": 4,
+    "candidates": 1,
+    "note": "vs=2032073752960"
+  },
+  "entity_owner.Owner": {
+    "status": "RESOLVED_FIELD",
+    "old": 160,
+    "new": 160,
+    "votes": 4,
+    "candidates": 1
+  },
+  "entitytype.ConfigName": {
+    "status": "RESOLVED_FIELD",
+    "old": 208,
+    "new": 208,
+    "votes": 4,
+    "candidates": 1
+  },
+  "entitytype.ModelName": {
+    "status": "RESOLVED_FIELD",
+    "old": 176,
+    "new": 176,
+    "votes": 6,
+    "candidates": 1
+  },
+  "entitytype.TypeName": {
+    "status": "RESOLVED_FIELD",
+    "old": 152,
+    "new": 152,
+    "votes": 4,
+    "candidates": 1
+  },
+  "infected.Skeleton": {
+    "status": "RESOLVED_FIELD",
+    "old": 1648,
+    "new": 1648,
+    "votes": 4,
+    "candidates": 1
+  },
+  "inventory.Hands": {
+    "status": "LIVE_PASS",
+    "old": 432,
+    "new": 432,
+    "votes": 4,
+    "candidates": 1,
+    "note": "hands=0"
+  },
+  "network.IdentityCount": {
+    "status": "LIVE_PASS",
+    "old": 28,
+    "new": 28,
+    "note": ""
+  },
+  "network.ManagerNetworkClient": {
+    "status": "LIVE_PASS",
+    "old": 80,
+    "new": 80,
+    "note": ""
+  },
+  "network.PlayerName": {
+    "status": "LIVE_PASS",
+    "old": 248,
+    "new": 248,
+    "votes": 4,
+    "candidates": 1,
+    "note": ""
+  },
+  "network.ScoreboardPtr": {
+    "status": "LIVE_PASS",
+    "old": 24,
+    "new": 24,
+    "note": ""
+  },
+  "network.ScoreboardSize": {
+    "status": "LIVE_PASS",
+    "old": 36,
+    "new": 36,
+    "note": ""
+  },
+  "network.ThirdPersonFlag": {
+    "status": "LIVE_PASS",
+    "old": 156,
+    "new": 156,
+    "note": ""
+  },
+  "player.DamageManager": {
+    "status": "RESOLVED_FIELD",
+    "old": 392,
+    "new": 392,
+    "votes": 4,
+    "candidates": 1
+  },
+  "player.InputController": {
+    "status": "LIVE_PASS",
+    "old": 2024,
+    "new": 2024,
+    "votes": 4,
+    "candidates": 1,
+    "note": "p=2033292671344"
+  },
+  "player.Inventory": {
+    "status": "LIVE_PASS",
+    "old": 1616,
+    "new": 1616,
+    "votes": 4,
+    "candidates": 2,
+    "note": "inv=2032978821488"
+  },
+  "player.RecordValue": {
+    "status": "LIVE_PASS",
+    "old": 44,
+    "new": 44,
+    "note": "scalar"
+  },
+  "player.Skeleton": {
+    "status": "LIVE_PASS",
+    "old": 2016,
+    "new": 2016,
+    "votes": 4,
+    "candidates": 1,
+    "note": "p=2033174613952"
+  },
+  "player.StatsContainer": {
+    "status": "LIVE_PASS",
+    "old": 1776,
+    "new": 1776,
+    "votes": 4,
+    "candidates": 1,
+    "note": "p=2033187489168"
+  },
+  "player_identity.Name": {
+    "status": "RESOLVED_FIELD",
+    "old": 176,
+    "new": 176,
+    "votes": 6,
+    "candidates": 1
+  },
+  "scoreboard_identity.Name": {
+    "status": "RESOLVED_FIELD",
+    "old": 248,
+    "new": 248,
+    "votes": 4,
+    "candidates": 1
+  },
+  "scoreboard_identity.NetworkId": {
+    "status": "PENDING_LIVE",
+    "old": 48,
+    "new": 48,
+    "note": "no unique field sig; must live-validate"
+  },
+  "scoreboard_identity.SteamId": {
+    "status": "RESOLVED_FIELD",
+    "old": 160,
+    "new": 160,
+    "votes": 4,
+    "candidates": 1
+  },
+  "skeleton.AnimClass1": {
+    "status": "LIVE_PASS",
+    "old": 152,
+    "new": 152,
+    "votes": 4,
+    "candidates": 1,
+    "note": "p=498216206586"
+  },
+  "skeleton.AnimClass2": {
+    "status": "LIVE_PASS",
+    "old": 40,
+    "new": 40,
+    "note": "p=1062284412"
+  },
+  "skeleton.AnimComponent": {
+    "status": "LIVE_PASS",
+    "old": 280,
+    "new": 280,
+    "votes": 4,
+    "candidates": 1,
+    "note": "p=2030241694104"
+  },
+  "modbase.FovBase": {
+    "status": "LIVE_PASS",
+    "old": 2500,
+    "new": 2500,
+    "note": "scalar field of FOV ctx"
+  },
+  "native.Is3rdPersonDisabled": {
+    "status": "LIVE_PASS",
+    "old": 9359712,
+    "new": 9359712,
+    "string": "Is3rdPersonDisabled",
+    "note": "4883ec28e85764e1ff488bc8e89f60e1"
+  },
+  "native.IsCrosshairDisabled": {
+    "status": "LIVE_PASS",
+    "old": 9359760,
+    "new": 9359760,
+    "string": "IsCrosshairDisabled",
+    "note": "4883ec28e82764e1ff488bc8e86f60e1"
+  },
+  "native.CameraViewChanged": {
+    "status": "LIVE_PASS",
+    "old": 3294560,
+    "new": 3294560,
+    "string": "CameraViewChanged",
+    "note": "488b0148ffa0c800"
+  },
+  "code.ThirdPersonAllowWriter": {
+    "status": "LIVE_PASS",
+    "old": null,
+    "new": 11031186,
+    "note": "32c9eb02b101488b"
+  },
+  "code.ThirdPersonAllowCopy0": {
+    "status": "LIVE_PASS",
+    "old": null,
+    "new": 5487124,
+    "note": "4088a984290000"
+  },
+  "code.ThirdPersonAllowCopy1": {
+    "status": "LIVE_PASS",
+    "old": null,
+    "new": 6244916,
+    "note": "4088ab84290000"
+  },
+  "code.AimingModelRecoil": {
+    "status": "LIVE_PASS",
+    "old": null,
+    "new": 5148966,
+    "note": "488b08833900488d4c24500f"
+  },
+  "code.CameraFovUpdate": {
+    "status": "LIVE_PASS",
+    "old": null,
+    "new": 7996208,
+    "note": "488bc44889580848"
+  },
+  "code.DayZPlayerGetName": {
+    "status": "LIVE_PASS",
+    "old": null,
+    "new": 5132576,
+    "note": "48895c2408574883"
+  },
+  "code.AllocCollisionBuffer": {
+    "status": "LIVE_PASS",
+    "old": null,
+    "new": 623504,
+    "note": "48895c2408488974"
+  }
+}

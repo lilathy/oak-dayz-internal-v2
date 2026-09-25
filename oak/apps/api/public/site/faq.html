@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Oak</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+    <header class="page-head">
+      <h1>FAQ</h1>
+      <p>Common questions about Oak DayZ.</p>
+    </header>
+
+    <div class="block">
+      <h2>How do I get access?</h2>
+      <p class="muted">Create an account, redeem a key on Account (or buy a plan when checkout is live), then download the launcher.</p>
+    </div>
+    <div class="block">
+      <h2>Where is the client DLL?</h2>
+      <p class="muted">You don’t download it from the website. The launcher fetches the latest client from the API when you inject.</p>
+    </div>
+    <div class="block">
+      <h2>HWID locked to another PC?</h2>
+      <p class="muted">Open a Support ticket with category <strong>HWID reset</strong>. Self-reset may be limited by cooldown; staff can reset when needed.</p>
+    </div>
+    <div class="block">
+      <h2>Account banned?</h2>
+      <p class="muted">Login will show the ban reason. Open a ticket only if you believe it was a mistake.</p>
+    </div>
+    <div class="block">
+      <h2>Forgot password?</h2>
+      <p class="muted">Use <a href="/forgot-password.html">Forgot password</a> — we’ll email a reset link.</p>
+    </div>
+    <div class="block">
+      <h2>Plans</h2>
+      <p class="muted">1 / 7 / 30 day keys stack time onto your account. Checkout is coming later.</p>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("faq");
+    Oak.applyBootstrap();
+  </script>
+</body>
+</html>

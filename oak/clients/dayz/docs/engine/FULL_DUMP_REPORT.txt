@@ -1,0 +1,86 @@
+[FULL-DUMP] 2026-09-04T15:21:47
+keys_in_values=80 checks=80
+
+[PASS] modbase.World                              -> 0x4262FE8     ptr=0x1d488e98e40
+[PASS] world.Camera                               -> 0x1B8         cam=0x1d57eeb6420
+[PASS] camera.InvertedViewRight                   -> 0x8           readable
+[PASS] camera.InvertedViewUp                      -> 0x14          readable
+[PASS] camera.InvertedViewForward                 -> 0x20          readable
+[PASS] camera.InvertedViewTranslation             -> 0x2C          pos=(7099.72998046875, 357.0631408691406, 14654.76953125)
+[PASS] camera.ViewPortSize                        -> 0x58          readable
+[PASS] camera.GetProjectionD1                     -> 0xD0          readable
+[PASS] camera.GetProjectionD2                     -> 0xDC          readable
+[PASS] world.LocalPlayer                          -> 0x2960        rediscovered ptr=0x1d969afde20 score=105 pos=(7096.62841796875, 356.1656494140625, 14656.908203125)
+[PASS] world.PlayerOn                             -> 0x2968        cluster
+[PASS] world.NearEntList                          -> 0xF48         ptr=2033180419216 count=1
+[PASS] world.FarEntList                           -> 0x1090        ptr=0 count=0
+[PASS] world.FarTableSize                         -> 0x1098        count=0
+[PASS] world.SlowEntList                          -> 0x2010        ptr=0 count=0
+[PASS] world.SlowTableSize                        -> 0x2018        count=0
+[PASS] world.BulletList                           -> 0xE00         ptr=0 count=0
+[PASS] world.BulletCount                          -> 0xE08         count=0
+[PASS] world.ItemList                             -> 0x2060        ptr=0 count=0
+[PASS] world.ItemListSize                         -> 0x2068        count=0
+[PASS] world.EyeAccom                             -> 0x296C        v=1.0
+[PASS] world.Hour                                 -> 0x2970        v=24.0
+[PASS] world.Day                                  -> 0x2974        v=0.5235987901687622
+[PASS] world.DayTime                              -> 0x2978        v=0.0
+[PASS] world.NoGrass                              -> 0xC00         v=0
+[PASS] world.GrassOffline                         -> 0xBF0         v=0
+[PASS] world.SlowEntValidCount                    -> 0x1F90        v=2185440
+[WARN] world.WeatherController                    -> 0x7198        ptr=0
+[PASS] entity.VisualState                         -> 0x1C8         vs=2032073752960
+[WARN] entity.FutureVisualState                   -> 0x120         fvs=0
+[PASS] entity.Type                                -> 0x180         type=2030374554496
+[PASS] entity.IsDead                              -> 0xE2          
+[PASS] entity.NetworkId                           -> 0x6DC         
+[PASS] entity.NetworkIdPlayer                     -> 0x6E4         
+[PASS] entity.Stamina                             -> 0x6A4         
+[PASS] player.Inventory                           -> 0x650         inv=2032978821488
+[PASS] inventory.Hands                            -> 0x1B0         hands=0
+[PASS] player.Skeleton                            -> 0x7E0         p=2033174613952
+[PASS] player.InputController                     -> 0x7E8         p=2033292671344
+[PASS] player.StatsContainer                      -> 0x6F0         p=2033187489168
+[WARN] player.DamageManager                       -> 0x188         p=0
+[PASS] player.RecordValue                         -> 0x2C          scalar
+[WARN] entitytype.TypeName                        -> 0x98          sp=2012904610048
+[WARN] entitytype.ConfigName                      -> 0xD0          sp=2012904609376
+[WARN] entitytype.ModelName                       -> 0xB0          sp=2033177482384
+[PASS] skeleton.AnimClass1                        -> 0x98          p=498216206586
+[PASS] skeleton.AnimClass2                        -> 0x28          p=1062284412
+[PASS] skeleton.AnimComponent                     -> 0x118         p=2030241694104
+[PASS] anim.AnimComponent                         -> 0x118         p=2030241694104
+[PASS] anim.MatrixArray                           -> 0xBE8         anim=0x1d8b3d5c198
+[PASS] anim.MatrixB                               -> 0x54          
+[WARN] infected.Skeleton                          -> 0x670         needs infected entity
+[WARN] entity_owner.Owner                         -> 0xA0          needs owned entity
+[WARN] player_identity.Name                       -> 0xB0          needs identity obj
+[WARN] scoreboard_identity.Name                   -> 0xF8          needs scoreboard entry
+[WARN] scoreboard_identity.NetworkId              -> 0x30          needs scoreboard entry
+[WARN] scoreboard_identity.SteamId                -> 0xA0          needs scoreboard entry
+[PASS] modbase.Network                            -> 0x100EB60     obj=0x1d48cc935e0
+[WARN] modbase.NetworkManager                     -> 0x100EBD0     null
+[PASS] modbase.PhysicsWorld                       -> 0x42662E0     obj=0x1d488be0e70
+[PASS] modbase.FOV_Context                        -> 0x1007C70     obj=0x1d57e1950f0
+[PASS] modbase.Tick                               -> 0xFF3928      raw ok
+[WARN] modbase.ScopeFovCtx                        -> 0x42638B0     null
+[PASS] modbase.FovBase                            -> 0x9C4         scalar field of FOV ctx
+[PASS] network.ThirdPersonFlag                    -> 0x9C          
+[PASS] network.ScoreboardPtr                      -> 0x18          
+[PASS] network.IdentityCount                      -> 0x1C          
+[PASS] network.ScoreboardSize                     -> 0x24          
+[PASS] network.PlayerName                         -> 0xF8          
+[PASS] network.ManagerNetworkClient               -> 0x50          
+[PASS] native.Is3rdPersonDisabled                 -> 0x8ED160      4883ec28e85764e1ff488bc8e89f60e1
+[PASS] native.IsCrosshairDisabled                 -> 0x8ED190      4883ec28e82764e1ff488bc8e86f60e1
+[PASS] native.CameraViewChanged                   -> 0x324560      488b0148ffa0c800
+[PASS] code.ThirdPersonAllowWriter                -> 0xA85292      32c9eb02b101488b
+[PASS] code.ThirdPersonAllowCopy0                 -> 0x53BA14      4088a984290000
+[PASS] code.ThirdPersonAllowCopy1                 -> 0x5F4A34      4088ab84290000
+[PASS] code.AimingModelRecoil                     -> 0x4E9126      488b08833900488d4c24500f
+[PASS] code.CameraFovUpdate                       -> 0x7A0330      488bc44889580848
+[PASS] code.DayZPlayerGetName                     -> 0x4E5120      48895c2408574883
+[PASS] code.AllocCollisionBuffer                  -> 0x98390       48895c2408488974
+
+SUMMARY PASS=66 FAIL=0 WARN=14
+REQUIRED_FAILS=0 []

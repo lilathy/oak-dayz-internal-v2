@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plans — Oak</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+    <header class="page-head">
+      <h1>Plans</h1>
+      <p>DayZ access. Checkout is not live yet — redeem codes still work on Account.</p>
+    </header>
+
+    <div class="plan-list">
+      <div class="plan-row">
+        <div>
+          <h3>1 Day</h3>
+          <p>Short session access.</p>
+        </div>
+        <div class="plan-meta">day1</div>
+        <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
+      </div>
+      <div class="plan-row">
+        <div>
+          <h3>7 Day</h3>
+          <p>One week of access.</p>
+        </div>
+        <div class="plan-meta">day7</div>
+        <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
+      </div>
+      <div class="plan-row">
+        <div>
+          <h3>30 Day</h3>
+          <p>Full month. Stacks if you redeem more time.</p>
+        </div>
+        <div class="plan-meta">day30</div>
+        <button class="btn btn-ghost" type="button" disabled>Coming soon</button>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:32px">
+      Have a key already? <a href="/account.html">Redeem on Account</a>
+    </p>
+  </div>
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("plans");
+    Oak.applyBootstrap();
+  </script>
+</body>
+</html>

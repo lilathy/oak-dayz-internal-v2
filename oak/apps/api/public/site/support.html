@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Oak</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+    <header class="page-head">
+      <h1>Support</h1>
+      <p>Open a ticket for general help, HWID reset, billing, or technical issues.</p>
+    </header>
+
+    <div class="block" id="newTicket">
+      <h2>New ticket</h2>
+      <div class="form-panel" style="max-width:560px">
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category" style="width:100%;padding:12px;background:#0a0a0a;color:var(--txt);border:1px solid var(--line)"></select>
+        </div>
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input id="subject" maxlength="120" />
+        </div>
+        <div class="field">
+          <label for="body">Message</label>
+          <textarea id="body" rows="5" style="width:100%;padding:12px;background:#0a0a0a;color:var(--txt);border:1px solid var(--line);font:inherit"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="createBtn" type="button">Submit ticket</button>
+        </div>
+        <p id="createMsg"></p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Your tickets</h2>
+      <div id="list"><p class="muted">Loading…</p></div>
+    </div>
+
+    <div class="block" id="thread" style="display:none">
+      <h2 id="threadTitle">Ticket</h2>
+      <div id="threadMsgs"></div>
+      <div class="form-panel" style="max-width:560px;margin-top:16px">
+        <div class="field">
+          <label for="reply">Reply</label>
+          <textarea id="reply" rows="3" style="width:100%;padding:12px;background:#0a0a0a;color:var(--txt);border:1px solid var(--line);font:inherit"></textarea>
+        </div>
+        <button class="btn btn-primary" id="replyBtn" type="button">Send reply</button>
+        <p id="replyMsg"></p>
+      </div>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("support");
+    Oak.applyBootstrap();
+    if (!Oak.requireAuthPage()) throw new Error("auth");
+
+    let openId = null;
+
+    async function loadCategories() {
+      const data = await Oak.api("/v1/tickets/categories");
+      document.getElementById("category").innerHTML = (data.categories || [])
+        .map((c) => `<option value="${c.id}">${c.label}</option>`)
+        .join("");
+    }
+
+    async function loadList() {
+      const data = await Oak.api("/v1/tickets/mine");
+      const rows = data.tickets || [];
+      document.getElementById("list").innerHTML = rows.length
+        ? `<table style="width:100%;border-collapse:collapse">
+            <tr><th align="left">Subject</th><th>Category</th><th>Status</th><th></th></tr>
+            ${rows
+              .map(
+                (t) => `<tr>
+              <td>${t.subject}</td>
+              <td class="mono">${t.category}</td>
+              <td>${t.status}</td>
+              <td><a href="#" data-id="${t.id}">Open</a></td>
+            </tr>`
+              )
+              .join("")}
+          </table>`
+        : `<p class="muted">No tickets yet.</p>`;
+      document.querySelectorAll("[data-id]").forEach((a) => {
+        a.onclick = (e) => {
+          e.preventDefault();
+          openTicket(a.getAttribute("data-id"));
+        };
+      });
+    }
+
+    async function openTicket(id) {
+      openId = id;
+      const data = await Oak.api("/v1/tickets/" + id);
+      document.getElementById("thread").style.display = "block";
+      document.getElementById("threadTitle").textContent =
+        data.ticket.subject + " · " + data.ticket.status;
+      document.getElementById("threadMsgs").innerHTML = (data.messages || [])
+        .map(
+          (m) => `<div style="padding:12px 0;border-bottom:1px solid var(--line)">
+          <div class="muted" style="font-size:12px">${m.username}${m.isStaff ? " (staff)" : ""} · ${(m.createdAt || "").slice(0, 19)}</div>
+          <div style="margin-top:6px;white-space:pre-wrap">${String(m.body).replace(/</g, "&lt;")}</div>
+        </div>`
+        )
+        .join("");
+    }
+
+    document.getElementById("createBtn").onclick = async () => {
+      const msg = document.getElementById("createMsg");
+      msg.className = "";
+      try {
+        const r = await Oak.api("/v1/tickets", {
+          method: "POST",
+          body: JSON.stringify({
+            category: document.getElementById("category").value,
+            subject: document.getElementById("subject").value.trim(),
+            body: document.getElementById("body").value.trim(),
+          }),
+        });
+        msg.className = "ok";
+        msg.textContent = "Ticket created.";
+        document.getElementById("subject").value = "";
+        document.getElementById("body").value = "";
+        await loadList();
+        openTicket(r.ticket.id);
+      } catch (e) {
+        msg.className = "error";
+        msg.textContent = Oak.friendlyError(e);
+      }
+    };
+
+    document.getElementById("replyBtn").onclick = async () => {
+      if (!openId) return;
+      const msg = document.getElementById("replyMsg");
+      try {
+        await Oak.api("/v1/tickets/" + openId + "/messages", {
+          method: "POST",
+          body: JSON.stringify({ body: document.getElementById("reply").value.trim() }),
+        });
+        document.getElementById("reply").value = "";
+        msg.className = "ok";
+        msg.textContent = "Sent.";
+        openTicket(openId);
+        loadList();
+      } catch (e) {
+        msg.className = "error";
+        msg.textContent = Oak.friendlyError(e);
+      }
+    };
+
+    loadCategories().then(loadList);
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "apiUrl": "https://api.example.com",
+  "expectedLoaderSha256": "",
+  "expectedSysSha256": ""
+}

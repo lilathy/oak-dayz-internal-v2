@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account — Oak</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+    <header class="page-head">
+      <h1>Account</h1>
+      <p>License, remaining time, and redeem.</p>
+    </header>
+
+    <div class="block">
+      <h2>Profile</h2>
+      <div id="info"><p class="muted">Loading…</p></div>
+      <div class="form-panel" style="margin-top:20px;max-width:400px">
+        <div class="field">
+          <label for="emailEdit">Email</label>
+          <input id="emailEdit" type="email" />
+        </div>
+        <div class="field">
+          <label for="curPass">Current password (required to change password)</label>
+          <input id="curPass" type="password" autocomplete="current-password" />
+        </div>
+        <div class="field">
+          <label for="newPass">New password (optional, min 10)</label>
+          <input id="newPass" type="password" autocomplete="new-password" minlength="10" />
+        </div>
+        <button class="btn btn-primary" id="saveProfile" type="button">Save profile</button>
+        <p id="profileMsg"></p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Redeem code</h2>
+      <div class="form-panel">
+        <div class="field">
+          <label for="code">Code</label>
+          <input id="code" placeholder="OAK-XXXX-XXXX-XXXX" />
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="redeemBtn" type="button">Redeem</button>
+        </div>
+        <p id="redeemMsg"></p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>DayZ entitlement</h2>
+      <div id="dayz"><p class="muted">Loading…</p></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("account");
+    Oak.applyBootstrap();
+    if (!Oak.requireAuthPage()) throw new Error("auth");
+
+    async function load() {
+      const info = document.getElementById("info");
+      const dayz = document.getElementById("dayz");
+      try {
+        const [me, lic] = await Promise.all([
+          Oak.api("/v1/auth/me"),
+          Oak.api("/v1/licenses/me"),
+        ]);
+        Oak.saveUser(me.user);
+        const u = me.user;
+        const L = lic.license || me.license;
+        const h = me.hwid;
+        info.innerHTML = `
+          <dl class="dl">
+            <dt>Username</dt><dd>${u.username}</dd>
+            <dt>Email</dt><dd>${u.email}</dd>
+            <dt>Role</dt><dd>${u.role}</dd>
+            <dt>License</dt><dd>${L?.status ?? "—"}</dd>
+            <dt>Plan</dt><dd>${L?.plan ?? "—"}</dd>
+            <dt>Expires</dt><dd>${L?.lifetime ? "lifetime" : (L?.expiresAt || "—")}</dd>
+            <dt>Time left</dt><dd>${Oak.fmtTimeLeft(L)}</dd>
+            <dt>HWID</dt><dd>${h?.bound ? (h.hint || "bound") : "not bound — use launcher"}</dd>
+          </dl>
+          <p class="muted" style="margin-top:12px"><a href="/support.html">Need help? Open a support ticket</a></p>
+        `;
+        document.getElementById("emailEdit").value = u.email || "";
+      } catch (e) {
+        if (e.status === 401) {
+          Oak.clearSession();
+          location.href = "/login.html";
+          return;
+        }
+        if (e.message === "banned" || e.body?.error === "banned") {
+          Oak.clearSession();
+          info.innerHTML = `<p class="error">This account is banned. Reason: ${e.body?.reason || "banned"}</p>`;
+          return;
+        }
+        info.innerHTML = `<p class="error">${e.message}</p>`;
+      }
+
+      try {
+        const data = await Oak.api("/v1/products/dayz/launch-info");
+        const p = data.product;
+        const launch = data.launch;
+        dayz.innerHTML = `
+          <dl class="dl">
+            <dt>Product</dt><dd>${p?.name} · ${p?.status}</dd>
+            <dt>Client</dt><dd>${p?.latestVersion}</dd>
+            <dt>Can inject</dt><dd>${launch?.canInject ? "yes" : "no"}</dd>
+            <dt>Reasons</dt><dd>${(launch?.reasons || []).join(", ") || "—"}</dd>
+          </dl>
+          <p class="muted" style="margin-top:16px">Inject only from the desktop launcher.</p>
+        `;
+      } catch (e) {
+        dayz.innerHTML = `<p class="error">${e.message}</p>`;
+      }
+    }
+
+    document.getElementById("redeemBtn").onclick = async () => {
+      const msg = document.getElementById("redeemMsg");
+      msg.className = "";
+      msg.textContent = "…";
+      try {
+        const r = await Oak.api("/v1/licenses/redeem", {
+          method: "POST",
+          body: JSON.stringify({ code: document.getElementById("code").value.trim() }),
+        });
+        document.getElementById("code").value = "";
+        msg.className = "ok";
+        msg.textContent =
+          "Added " + r.creditedDays + " day(s). Time left: " + Oak.fmtTimeLeft(r.license);
+        load();
+      } catch (e) {
+        msg.className = "error";
+        msg.textContent = Oak.friendlyError(e);
+      }
+    };
+
+    document.getElementById("saveProfile").onclick = async () => {
+      const msg = document.getElementById("profileMsg");
+      msg.className = "";
+      const payload = { email: document.getElementById("emailEdit").value.trim() };
+      const np = document.getElementById("newPass").value;
+      if (np) {
+        payload.currentPassword = document.getElementById("curPass").value;
+        payload.newPassword = np;
+      }
+      try {
+        const r = await Oak.api("/v1/auth/profile", {
+          method: "PATCH",
+          body: JSON.stringify(payload),
+        });
+        Oak.saveUser(r.user);
+        msg.className = "ok";
+        msg.textContent = "Profile saved.";
+        document.getElementById("curPass").value = "";
+        document.getElementById("newPass").value = "";
+        load();
+      } catch (e) {
+        msg.className = "error";
+        msg.textContent = Oak.friendlyError(e);
+      }
+    };
+
+    load();
+  </script>
+</body>
+</html>

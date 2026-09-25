@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download — Oak</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <nav id="nav"></nav>
+    <header class="page-head">
+      <h1>Download</h1>
+      <p>Install the shared launcher. It pulls the latest DayZ client from the API when you inject — no public client download.</p>
+    </header>
+
+    <ol class="steps">
+      <li><strong>Create an account</strong> — <a href="/register.html">Register</a> or <a href="/login.html">login</a>.</li>
+      <li><strong>Get time</strong> — redeem a code on <a href="/account.html">Account</a>.</li>
+      <li><strong>Download the launcher</strong> below, sign in, pick DayZ, Inject.</li>
+    </ol>
+
+    <div class="path-block">
+      <p class="section-label">Launcher release</p>
+      <div id="launcherMeta" class="muted">Checking…</div>
+      <p style="margin-top:16px">
+        <a class="btn btn-primary bare" id="dlBtn" href="/v1/downloads/launcher">Download launcher</a>
+      </p>
+      <p class="muted" style="margin-top:16px">Dev fallback path if nothing is uploaded yet:</p>
+      <pre>oak\bin\OakLauncher.exe</pre>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+  <script>
+    Oak.renderNav("download");
+    (async () => {
+      const b = await Oak.applyBootstrap();
+      const meta = document.getElementById("launcherMeta");
+      const btn = document.getElementById("dlBtn");
+      try {
+        const data = await Oak.api("/v1/downloads/launcher/meta");
+        if (data.launcher) {
+          meta.textContent = `Version ${data.launcher.version} · ${(data.launcher.sizeBytes/1024/1024).toFixed(2)} MB · uploaded ${(data.launcher.uploadedAt||"").slice(0,19)}`;
+          btn.style.display = "inline-flex";
+        } else if (b?.launcher) {
+          meta.textContent = `Version ${b.launcher.version}`;
+        } else {
+          meta.textContent = "No launcher uploaded yet — use the local build path below.";
+          btn.style.opacity = "0.4";
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("No launcher release on the API yet. Upload one in Admin, or run oak\\bin\\OakLauncher.exe locally.");
+          });
+        }
+      } catch (e) {
+        meta.textContent = e.message;
+      }
+    })();
+  </script>
+</body>
+</html>

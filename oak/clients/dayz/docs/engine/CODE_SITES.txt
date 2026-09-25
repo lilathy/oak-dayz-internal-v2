@@ -1,0 +1,7 @@
+code.AimingModelRecoil = 0x4E9126
+code.AllocCollisionBuffer = 0x98390
+code.CameraFovUpdate = 0x7A0330
+code.DayZPlayerGetName = 0x4E5120
+code.ThirdPersonAllowCopy0 = 0x53BA14
+code.ThirdPersonAllowCopy1 = 0x5F4A34
+code.ThirdPersonAllowWriter = 0xA85292
